@@ -2,7 +2,7 @@ require 'barby/barcode/ean_13'
 require 'barby/barcode/code_128'
 require 'barby/outputter/svg_outputter'
 
-class Codigo::Barras
+class CodigoDeBarrasServicio
 
   attr_accessor :modelo
 
