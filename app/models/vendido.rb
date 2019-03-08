@@ -12,6 +12,8 @@ class Vendido < ApplicationRecord
   delegate :nombre, :codigo, :tipo, to: :producto, prefix: false,
     allow_nil: true
 
+  default_scope { includes(:producto) }
+
   def to_s
     codigo
   end
