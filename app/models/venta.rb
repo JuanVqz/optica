@@ -19,7 +19,7 @@ class Venta < ApplicationRecord
   scope :recientes_primero, -> { Venta.order(created_at: :desc) }
 
   def suma_precios_venta
-    vendidos.map { |v| v.precio_venta * v.cantidad }.reduce(0, :+)
+    vendidos.map { |v| v.precio_venta * v.cantidad }.sum
   end
 
   def suma_descuentos
