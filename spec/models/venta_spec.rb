@@ -16,6 +16,26 @@ RSpec.describe Venta, type: :model do
 
   it { should_not allow_value(0).for(:total) }
 
+  describe ".buscar" do
+    let!(:ventas) { create_list :venta, 4 }
+    let!(:venta) do
+      create :venta, codigo: '0000000000055', total: 500,
+        descuento: 300
+    end
+
+    it "regresa 1 coincidencia por código" do
+      expect(Venta.buscar("0000000000055").count).to eq 1
+    end
+
+    it "regresa 1 coincidencia por total" do
+      expect(Venta.buscar("500").count).to eq 1
+    end
+
+    it "regresa 1 coincidencia por descuento" do
+      expect(Venta.buscar("300").count).to eq 1
+    end
+  end # describe ".buscar"
+
   describe "#suma_precios_venta" do
     context "cuando tiene productos vendidos" do
       let(:venta) do

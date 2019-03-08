@@ -20,6 +20,10 @@ class Venta < ApplicationRecord
   scope :con_cliente, -> { includes(:cliente) }
   scope :con_pagos,   -> { includes(:pagos) }
 
+  def self.buscar texto
+    where("concat_ws(' ', codigo, total, descuento) ILIKE ?", "%#{texto&.squish}%")
+  end
+
   def suma_precios_venta
     vendidos.map { |v| v.precio_venta * v.cantidad }.sum
   end
