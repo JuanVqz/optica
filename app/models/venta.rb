@@ -17,6 +17,9 @@ class Venta < ApplicationRecord
   validates :cliente, :fecha_entrega, presence: true
   validates :total, numericality: { greater_than: 0 }
 
+  scope :con_cliente, -> { includes(:cliente) }
+  scope :con_pagos,   -> { includes(:pagos) }
+
   def suma_precios_venta
     vendidos.map { |v| v.precio_venta * v.cantidad }.sum
   end
