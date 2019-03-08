@@ -11,4 +11,8 @@ class Vendido < ApplicationRecord
 
   delegate :nombre, :codigo, :tipo, to: :producto, prefix: false,
     allow_nil: true
+
+  def to_s
+    codigo
+  end
 end

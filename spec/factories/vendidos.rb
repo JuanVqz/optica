@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :vendido do
-    venta { nil }
+    venta
     producto { nil }
     cantidad { 1 }
     precio_venta { 1 }
@@ -8,5 +8,11 @@ FactoryBot.define do
     descuento { 0 }
     subtotal { 1 }
     observaciones { "MyText" }
+  end
+
+  trait :es_armazon do
+    before :create do |vendido|
+      vendido.producto = create :armazon
+    end
   end
 end

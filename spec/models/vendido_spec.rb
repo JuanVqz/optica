@@ -15,4 +15,12 @@ RSpec.describe Vendido, type: :model do
   it { should_not allow_value(0).for(:subtotal) }
   it { should validate_numericality_of(:precio_compra)
         .is_greater_than_or_equal_to(0) }
+
+  describe "#to_s" do
+    let(:vendido) { create :vendido, :es_armazon }
+
+    it "debe regresar el código de producto" do
+      expect(vendido.to_s).to eq vendido.producto.codigo
+    end
+  end # describe "#to_s"
 end
