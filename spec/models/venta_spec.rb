@@ -68,12 +68,12 @@ RSpec.describe Venta, type: :model do
   end # describe "#suma_descuentos"
 
   describe "#deuda" do
-    context "cuando la venta no es saldada" do
-      let(:pago) do
-        build_list :pago, 1, efectivo: 500, anticipo: 200, cambio: 300
-      end
-      let(:venta) { build :venta, pagos: pago, total: 300 }
+    let(:pago) do
+      build_list :pago, 1, efectivo: 500, anticipo: 200, cambio: 300
+    end
+    let(:venta) { build :venta, pagos: pago, total: 300 }
 
+    context "cuando la venta no es saldada" do
       it "debe ser 100" do
         expect(venta.deuda).to eq 100
       end
@@ -82,15 +82,11 @@ RSpec.describe Venta, type: :model do
         venta.total = 400
         expect(venta.deuda).to eq 200
       end
-    end # context es la diferencia del anticipo y el total
+    end # context cuando la venta no es saldada
 
     context "cuando la venta es saldada" do
-      let(:pago) do
-        build_list :pago, 1, efectivo: 500, anticipo: 200, cambio: 300
-      end
-      let(:venta) { build :venta, pagos: pago, total: 100 }
-
       it "debe ser -100" do
+        venta.total = 100
         expect(venta.deuda).to eq(-100)
       end
 
@@ -98,8 +94,8 @@ RSpec.describe Venta, type: :model do
         venta.total = 1
         expect(venta.deuda).to eq(-199)
       end
-    end # context cuando el cliente no es deudor
-  end # describe "#debe"
+    end # context cuando la venta es saldada
+  end # describe "#deuda"
 
   describe "#comprobar_estado_de_pago" do
     context "cuando la venta es pagada" do

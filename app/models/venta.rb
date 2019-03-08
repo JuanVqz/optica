@@ -28,7 +28,7 @@ class Venta < ApplicationRecord
   end
 
   def deuda
-    self.total - suma_anticipos
+    total - suma_anticipos
   end
 
   def suma_anticipos
