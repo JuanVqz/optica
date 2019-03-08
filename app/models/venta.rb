@@ -3,6 +3,7 @@ class Venta < ApplicationRecord
 
   before_save :comprobar_estado_de_pago
   before_create :asignar_siguiente_codigo
+  after_save :descontar_existencia_de_producto!
 
   belongs_to :cliente
   belongs_to :usuario
@@ -51,4 +52,9 @@ class Venta < ApplicationRecord
   def asignar_siguiente_codigo
     Codigo::Siguiente.new(self).asignar
   end
+
+  def descontar_existencia_de_producto!
+    ExistenciaDeProductoServicio.new(self).descontar if saldada?
+  end
+
 end
