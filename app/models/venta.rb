@@ -32,7 +32,7 @@ class Venta < ApplicationRecord
   end
 
   def suma_anticipos
-    self.pagos.map(&:anticipo).reduce(0,:+)
+    pagos.map(&:anticipo).sum
   end
 
   def to_s

@@ -97,6 +97,25 @@ RSpec.describe Venta, type: :model do
     end # context cuando la venta es saldada
   end # describe "#deuda"
 
+  describe "#suma_anticipos" do
+    context "cuando tiene pagos" do
+      let(:pagos) { build_list :pago, 10 }
+      let(:venta) { create :venta, pagos: pagos }
+
+      it "debe ser 10" do
+        expect(venta.suma_anticipos).to eq 10
+      end
+    end # context cuando tiene pagos
+
+    context "cuando no tiene pagos" do
+      let(:venta) { create :venta, pagos: nil.to_a }
+
+      it "debe ser 0" do
+        expect(venta.suma_anticipos).to eq 0
+      end
+    end # context cuando no tiene pagos
+  end # describe "#suma_anticipos"
+
   describe "#comprobar_estado_de_pago" do
     let(:pago) do
       build_list :pago, 1, efectivo: 500, anticipo: 200, cambio: 300
