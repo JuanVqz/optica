@@ -5,6 +5,8 @@
       Historial de ventas
     .block-options
       .block-options-item
+        = render 'shared/buscador'
+      .block-options-item
         = link_to [:new, :venta], class: 'btn btn-alt-secondary' do
           %i.fa.fa-plus
           registrar venta
