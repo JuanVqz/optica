@@ -1,5 +1,5 @@
 class Venta < ApplicationRecord
-  PRIMER_CODIGO = "1000000000016"
+  PRIMER_CODIGO = "0000000000017"
 
   before_save :comprobar_estado_de_pago
   before_create :asignar_siguiente_codigo!
@@ -50,7 +50,7 @@ class Venta < ApplicationRecord
   end
 
   def asignar_siguiente_codigo!
-    Codigo::Siguiente.new(self).asignar
+    CodigoSiguienteServicio.new(self).asignar
   end
 
   def descontar_existencia_de_producto!

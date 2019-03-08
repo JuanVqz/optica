@@ -1,15 +1,16 @@
 require 'barby/barcode/ean_13'
 
-class Codigo::Siguiente
+class CodigoSiguienteServicio
 
   attr_accessor :modelo
+  LARGO_DE_CODIGO = 12
 
   def initialize modelo
     @modelo = modelo
   end
 
   def asignar
-    return primar_codigo if es_primer_registro?
+    return primer_codigo if es_primer_registro?
     modelo.codigo = siguiente_codigo
   end
 
@@ -17,24 +18,28 @@ class Codigo::Siguiente
     modelo.class.count < 1
   end
 
-  def primar_codigo
+  def primer_codigo
     modelo.codigo = modelo.class::PRIMER_CODIGO
   end
 
   def siguiente_codigo
-    eliminar_checksum modelo.class.last.codigo
+    eliminar_checksum! modelo.class.last.codigo
   end
 
-  def eliminar_checksum codigo
+  def eliminar_checksum! codigo
     sumar_uno codigo.chop!
   end
 
   def sumar_uno codigo
-    siguiente = (codigo.to_i + 1).to_s
-    agregar_checksum siguiente
+    largo_valido codigo.to_i + 1
   end
 
-  def agregar_checksum codigo
+  def largo_valido codigo
+    codigo = codigo.to_s.rjust(LARGO_DE_CODIGO, '0')
+    formato_ean_13 codigo
+  end
+
+  def formato_ean_13 codigo
     Barby::EAN13.new(codigo).to_s
   end
 end
