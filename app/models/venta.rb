@@ -24,7 +24,7 @@ class Venta < ApplicationRecord
   end
 
   def suma_descuentos
-    vendidos.map(&:descuento).reduce(0,:+)
+    vendidos.map(&:descuento).sum
   end
 
   def deuda
