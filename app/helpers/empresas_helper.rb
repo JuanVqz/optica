@@ -1,7 +1,7 @@
 module EmpresasHelper
 
   def empresa_actual
-    Empresa.first
+    @empresa ||= Empresa.first
   end
 
 end
