@@ -17,8 +17,6 @@ class Venta < ApplicationRecord
   validates :cliente, :fecha_entrega, presence: true
   validates :total, numericality: { greater_than: 0 }
 
-  scope :recientes_primero, -> { Venta.order(created_at: :desc) }
-
   def suma_precios_venta
     vendidos.map { |v| v.precio_venta * v.cantidad }.sum
   end

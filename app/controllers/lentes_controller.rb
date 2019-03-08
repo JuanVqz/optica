@@ -2,7 +2,7 @@ class LentesController < ApplicationController
   before_action :set_lente, only: [:show, :edit, :update, :destroy]
 
   def index
-    @lentes = Lente.page(params[:page])
+    @lentes = Lente.recientes_primero.page(params[:page])
   end
 
   def show

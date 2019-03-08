@@ -2,7 +2,7 @@ class EmpresasController < ApplicationController
   before_action :set_empresa, only: [:show, :edit, :update, :destroy]
 
   def index
-    @empresas = Empresa.all
+    @empresas = Empresa.recientes_primero
   end
 
   def show
