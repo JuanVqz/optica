@@ -31,6 +31,7 @@ group :development, :test do
   gem 'capybara'
   gem 'selenium-webdriver'
   gem 'chromedriver-helper'
+  gem 'bullet'
 end
 
 group :development do
