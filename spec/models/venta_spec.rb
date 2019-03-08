@@ -146,14 +146,14 @@ RSpec.describe Venta, type: :model do
     end # context cuando la venta no es saldada
   end # describe "#comprobar_estado_de_pago"
 
-  describe "#asignar_siguiente_codigo" do
-    context "when venta without codigo" do
+  describe "#asignar_siguiente_codigo!" do
+    context "cuando se crea una nueva venta" do
       let(:venta) { build :venta, codigo: nil }
 
-      it "assigns codigo" do
+      it "debe asignar siguiente código" do
         expect { venta.save! }.to change { venta.codigo }
       end
-    end # context when venta without codigo
+    end # context cuando se crea una nueva venta
   end # describe "#asignar_siguiente_codigo"
 
 end
