@@ -46,7 +46,7 @@ class Venta < ApplicationRecord
   end
 
   def anticipos_mayor_o_igual_que_total?
-    suma_anticipos >= self.total
+    suma_anticipos >= total
   end
 
   def asignar_siguiente_codigo
