@@ -1,8 +1,8 @@
 %tr
-  %td.text-left= vendido.producto.codigo
-  %td.text-left= vendido.producto
+  %td.text-left= vendido
+  %td.text-left= vendido.nombre
   %td= vendido.cantidad
   %td.text-right= number_to_currency vendido.precio_venta
   %td.text-right= vendido.descuento
   %td.text-right= number_to_currency vendido.subtotal
-  %td= vendido.producto.tipo
+  %td= vendido.tipo

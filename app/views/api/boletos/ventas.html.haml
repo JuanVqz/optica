@@ -16,7 +16,7 @@
   %tbody
     - @venta.vendidos.each do |vendido|
       %tr
-        %td= vendido.producto.codigo
+        %td= vendido
         %td.texto-centro= vendido.cantidad
         %td.texto-der= number_to_currency vendido.descuento
         %td.texto-der= number_to_currency vendido.precio_venta
