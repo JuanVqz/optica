@@ -116,6 +116,14 @@ RSpec.describe Venta, type: :model do
     end # context cuando no tiene pagos
   end # describe "#suma_anticipos"
 
+  describe "#to_s" do
+    let(:venta) { create :venta }
+
+    it "debe regresar el codigo de venta" do
+      expect(venta.to_s).to eq venta.codigo
+    end
+  end # describe "#to_s"
+
   describe "#comprobar_estado_de_pago" do
     let(:pago) do
       build_list :pago, 1, efectivo: 500, anticipo: 200, cambio: 300
