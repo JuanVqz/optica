@@ -43,67 +43,67 @@ RSpec.describe Producto, type: :model do
 
     context "Armazon" do
       it "regresa 3 por type" do
-        expect(Producto.buscar("Armazon").count).to eq 3
+        expect(Armazon.buscar("Armazon").count).to eq 3
       end
 
       it "regresa 1 por nombre" do
-        expect(Producto.buscar("uno").count).to eq 1
+        expect(Armazon.buscar("uno").count).to eq 1
       end
 
       it "regresa 1 por código" do
-        expect(Producto.buscar("uno").count).to eq 1
+        expect(Armazon.buscar("uno").count).to eq 1
       end
 
       it "regresa 1 por tipo" do
-        expect(Producto.buscar("completo").count).to eq 1
+        expect(Armazon.buscar("completo").count).to eq 1
       end
 
       it "regresa 1 por existencia" do
-        expect(Producto.buscar("60").count).to eq 1
+        expect(Armazon.buscar("60").count).to eq 1
       end
     end # context Armazon
 
     context "Lente" do
       it "regresa 3 por type" do
-        expect(Producto.buscar("Lente").count).to eq 3
+        expect(Lente.buscar("Lente").count).to eq 3
       end
 
       it "regresa 1 por nombre" do
-        expect(Producto.buscar("dos").count).to eq 1
+        expect(Lente.buscar("dos").count).to eq 1
       end
 
       it "regresa 1 por código" do
-        expect(Producto.buscar("dos").count).to eq 1
+        expect(Lente.buscar("dos").count).to eq 1
       end
 
       it "regresa 1 por tipo" do
-        expect(Producto.buscar("filtro uv").count).to eq 1
+        expect(Lente.buscar("filtro uv").count).to eq 1
       end
 
       it "regresa 1 por existencia" do
-        expect(Producto.buscar("70").count).to eq 1
+        expect(Lente.buscar("70").count).to eq 1
       end
     end # context Lente
 
     context "Mica" do
       it "regresa 3 por type" do
-        expect(Producto.buscar("Mica").count).to eq 3
+        expect(Mica.buscar("Mica").count).to eq 3
       end
 
       it "regresa 1 por nombre" do
-        expect(Producto.buscar("tres").count).to eq 1
+        expect(Mica.buscar("tres").count).to eq 1
       end
 
       it "regresa 1 por código" do
-        expect(Producto.buscar("tres").count).to eq 1
+        expect(Mica.buscar("tres").count).to eq 1
       end
 
       it "regresa 1 por tipo" do
-        expect(Producto.buscar("cr").count).to eq 1
+        expect(Mica.buscar("cr").count).to eq 1
       end
 
       it "regresa 1 por existencia" do
-        expect(Producto.buscar("80").count).to eq 1
+        expect(Mica.buscar("80").count).to eq 1
       end
     end # context Mica
 
