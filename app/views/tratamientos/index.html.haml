@@ -5,6 +5,8 @@
       Lista de tratamientos
     .block-options
       .block-options-item
+        = render 'shared/buscador', recursos_ruta: tratamientos_path
+      .block-options-item
         = link_to [:new, :tratamiento], class: 'btn btn-alt-secondary' do
           %i.fa.fa-plus
           registrar tratamiento
