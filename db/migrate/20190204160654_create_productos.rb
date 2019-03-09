@@ -9,6 +9,7 @@ class CreateProductos < ActiveRecord::Migration[5.2]
       t.integer :existencia, default: 1
       t.string :tipo
       t.string :type
+      t.json :imagenes
 
       t.timestamps
     end

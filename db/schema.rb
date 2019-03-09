@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(version: 2019_03_02_230725) do
     t.integer "existencia", default: 1
     t.string "tipo"
     t.string "type"
+    t.json "imagenes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "usuario_id"
