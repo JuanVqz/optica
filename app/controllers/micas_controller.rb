@@ -47,7 +47,7 @@ class MicasController < ApplicationController
   def mica_params
     params.require(:mica).permit(
       :nombre, :codigo, :descripcion, :precio_venta, :precio_compra,
-      :existencia, :tipo, { imagenes: [] }
+      :existencia, :tipo, :publicado, { imagenes: [] }
     )
   end
 end
