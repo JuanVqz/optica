@@ -5,7 +5,7 @@
       Historial de ventas
     .block-options
       .block-options-item
-        = render 'shared/buscador'
+        = render 'shared/buscador', recursos_ruta: ventas_path
       .block-options-item
         = link_to [:new, :venta], class: 'btn btn-alt-secondary' do
           %i.fa.fa-plus
