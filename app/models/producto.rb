@@ -1,4 +1,6 @@
 class Producto < ApplicationRecord
+  mount_uploaders :imagenes, ImagenUploader
+
   belongs_to :usuario
   has_many :vendidos
   has_many :ventas, through: :vendidos

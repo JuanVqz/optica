@@ -24,3 +24,8 @@
     %td= l producto.created_at, format: :long
     %th actualizado el:
     %td= l producto.updated_at, format: :long
+
+  %tr
+    - producto.imagenes.each do |imagen|
+      %td= image_tag imagen.chica.url
+

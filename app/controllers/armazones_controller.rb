@@ -48,7 +48,7 @@ class ArmazonesController < ApplicationController
   def armazon_params
     params.require(:armazon).permit(
       :nombre, :codigo, :descripcion, :precio_venta, :precio_compra,
-      :existencia, :tipo
+      :existencia, :tipo, { imagenes: [] }
     )
   end
 end

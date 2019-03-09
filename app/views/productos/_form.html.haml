@@ -15,6 +15,12 @@
       = f.input :precio_venta, as: :float
     .col-12
       = f.input :descripcion, as: :text
+    .col-2
+      = f.input :imagenes, as: :file, input_html: { multiple: true }
+    .col-10
+      - if producto.imagenes?
+        - producto.imagenes.each do |imagen|
+          = image_tag imagen.chica.url
     .block-content.block-content-full.block-content-sm.bg-body-light.font-size-sm
       .col-12
         = f.submit class: 'btn btn-alt-primary'
