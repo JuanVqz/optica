@@ -47,7 +47,7 @@ class LentesController < ApplicationController
   def lente_params
     params.require(:lente).permit(
       :nombre, :codigo, :descripcion, :precio_venta, :precio_compra,
-      :existencia, :tipo
+      :existencia, :tipo, { imagenes: [] }
     )
   end
 end

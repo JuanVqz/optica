@@ -48,7 +48,7 @@ class TratamientosController < ApplicationController
   def tratamiento_params
     params.require(:tratamiento).permit(
       :nombre, :codigo, :descripcion, :precio_venta, :precio_compra,
-      :existencia
+      :existencia, { imagenes: [] }
     )
   end
 end
