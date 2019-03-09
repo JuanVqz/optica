@@ -9,7 +9,7 @@ class Producto < ApplicationRecord
   validates :codigo, uniqueness: { case_sensitive: false }
 
   def self.buscar texto
-    where("concat_ws(' ', codigo, nombre, tipo, type) ILIKE ?", "%#{texto&.squish}%")
+    where("concat_ws(' ', codigo, nombre, tipo, type, existencia) ILIKE ?", "%#{texto&.squish}%")
   end
 
   def to_s
