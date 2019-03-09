@@ -20,25 +20,25 @@ RSpec.describe Producto, type: :model do
     let!(:armazones) { create_list :armazon, 2, tipo: "sobrepuesto" }
     let!(:armazon) do
       create :armazon, nombre: "uno", codigo: "uno", tipo: "completo",
-        existencia: 40
+        existencia: 60
     end
 
     let!(:lentes) { create_list :lente, 2, tipo: "polarizado" }
     let!(:lente) do
       create :lente, nombre: "dos", codigo: "dos", tipo: "filtro uv",
-        existencia: 50
+        existencia: 70
     end
 
     let!(:micas) { create_list :mica, 2, tipo: "monofocal" }
     let!(:mica) do
       create :mica, nombre: "tres", codigo: "tres", tipo: "cr",
-        existencia: 60
+        existencia: 80
     end
 
     let!(:tratamientas) { create_list :tratamiento, 2 }
     let!(:tratamiento) do
       create :tratamiento, nombre: "cuatro", codigo: "cuatro",
-        existencia: 70
+        existencia: 90
     end
 
     context "Armazon" do
@@ -59,7 +59,7 @@ RSpec.describe Producto, type: :model do
       end
 
       it "regresa 1 por existencia" do
-        expect(Producto.buscar("40").count).to eq 1
+        expect(Producto.buscar("60").count).to eq 1
       end
     end # context Armazon
 
@@ -81,7 +81,7 @@ RSpec.describe Producto, type: :model do
       end
 
       it "regresa 1 por existencia" do
-        expect(Producto.buscar("50").count).to eq 1
+        expect(Producto.buscar("70").count).to eq 1
       end
     end # context Lente
 
@@ -103,7 +103,7 @@ RSpec.describe Producto, type: :model do
       end
 
       it "regresa 1 por existencia" do
-        expect(Producto.buscar("60").count).to eq 1
+        expect(Producto.buscar("80").count).to eq 1
       end
     end # context Mica
 
@@ -121,7 +121,7 @@ RSpec.describe Producto, type: :model do
       end
 
       it "regresa 1 por existencia" do
-        expect(Tratamiento.buscar("70").count).to eq 1
+        expect(Tratamiento.buscar("90").count).to eq 1
       end
     end # context Tratamiento
   end # describe ".buscar"
