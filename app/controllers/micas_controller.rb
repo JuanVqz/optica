@@ -2,7 +2,7 @@ class MicasController < ApplicationController
   before_action :set_mica, only: [:show, :edit, :update, :destroy]
 
   def index
-    @micas = Mica.recientes_primero.page(params[:page])
+    @micas = Mica.recientes_primero.buscar(params[:q]).page(params[:page])
   end
 
   def show

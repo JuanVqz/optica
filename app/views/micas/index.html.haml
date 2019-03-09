@@ -5,6 +5,8 @@
       Lista de micas
     .block-options
       .block-options-item
+        = render 'shared/buscador', recursos_ruta: micas_path
+      .block-options-item
         = link_to [:new, :mica], class: 'btn btn-alt-secondary' do
           %i.fa.fa-plus
           registrar mica
