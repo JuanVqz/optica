@@ -7,8 +7,8 @@
   %tr
     %th existencia:
     %td= producto.existencia
-    %th descripción:
-    %td= producto.descripcion
+    %th estado:
+    %td= estado_de_publicacion producto
   %tr
     %th precio de venta:
     %td= number_to_currency producto.precio_venta
@@ -24,6 +24,11 @@
     %td= l producto.created_at, format: :long
     %th actualizado el:
     %td= l producto.updated_at, format: :long
+  %tr
+    %th descripción:
+    %td= producto.descripcion
+    %th
+    %td
 
   %tr
     - producto.imagenes.each do |imagen|

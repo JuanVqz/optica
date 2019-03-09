@@ -4,6 +4,7 @@
       %tr
         %th código
         %th nombre
+        %th estado
         %th existencias
         %th tipo
         %th actualizado el
@@ -13,6 +14,7 @@
         %tr
           %td= producto.codigo
           %td= producto.nombre
+          %td= estado_de_publicacion producto
           %td= producto.existencia
           %td= producto.tipo
           %td= l producto.updated_at, format: :long
