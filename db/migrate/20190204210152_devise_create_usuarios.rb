@@ -6,6 +6,7 @@ class DeviseCreateUsuarios < ActiveRecord::Migration[5.2]
       t.string :nombre, default: "", null: false
       t.integer :cargo, default: 0, null: false
       t.boolean :activo, default: true, null: false
+      t.boolean :notificar, default: false
       t.string :telefono
       t.string :type
 

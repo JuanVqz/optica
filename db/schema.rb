@@ -78,6 +78,7 @@ ActiveRecord::Schema.define(version: 2019_03_02_230725) do
     t.string "nombre", default: "", null: false
     t.integer "cargo", default: 0, null: false
     t.boolean "activo", default: true, null: false
+    t.boolean "notificar", default: false
     t.string "telefono"
     t.string "type"
     t.string "email", default: "", null: false
