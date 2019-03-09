@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 2019_03_02_230725) do
     t.money "precio_venta", scale: 2, default: "0.0"
     t.money "precio_compra", scale: 2, default: "0.0"
     t.integer "existencia", default: 1
+    t.boolean "publicado", default: false
     t.string "tipo"
     t.string "type"
     t.json "imagenes"
