@@ -6,5 +6,6 @@ FactoryBot.define do
     password_confirmation { "123456" }
     cargo { 'admin' }
     activo { true }
+    notificar { false }
   end
 end

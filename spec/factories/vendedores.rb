@@ -5,5 +5,6 @@ FactoryBot.define do
     password { "123456" }
     cargo { 'vendedor' }
     activo { true }
+    notificar { false }
   end
 end

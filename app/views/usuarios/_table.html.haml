@@ -4,6 +4,7 @@
       %tr
         %th nombre
         %th email
+        %th notificar
         %th cargo
         %th.text-center{:style => "width: 100px;"} Acciones
     %tbody
@@ -11,6 +12,7 @@
         %tr
           %td= usuario.nombre
           %td= usuario.email
+          %td= permitir_notificar usuario
           %td= usuario.cargo
           %td
             .btn-group

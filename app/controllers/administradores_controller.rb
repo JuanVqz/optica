@@ -41,7 +41,8 @@ class AdministradoresController < ApplicationController
 
   def administrador_params
     params.require(:administrador).permit(
-      :nombre, :telefono, :email, :password, :password_confirmation, :activo
+      :nombre, :telefono, :email, :password, :password_confirmation,
+      :activo, :notificar
     )
   end
 end
