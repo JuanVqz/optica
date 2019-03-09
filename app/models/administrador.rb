@@ -1,4 +1,4 @@
-class Admin < Usuario
+class Administrador < Usuario
   before_create :establecer_cargo
 
   private

@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     resources :ventas, only: :show
   end
 
+  resources :administradores, except: [:destroy]
   resources :armazones
   resources :clientes, except: [:destroy]
   resources :empresas

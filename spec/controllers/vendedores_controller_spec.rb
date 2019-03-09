@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe VendedoresController, type: :controller do
 
-  let(:admin) { create :admin }
+  let(:admin) { create :administrador }
 
   let(:valid_attributes) { attributes_for :vendedor }
   let(:invalid_attributes) { attributes_for :vendedor, nombre: nil }
