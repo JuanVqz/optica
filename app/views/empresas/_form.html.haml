@@ -1,20 +1,20 @@
 -# frozen_string_literal: true
 = simple_form_for(@empresa) do |f|
   .row
-    .col-3
+    .col-md-3
       = f.input :nombre
-    .col-3
+    .col-md-3
       = f.input :telefono
-    .col-3
+    .col-md-3
       = f.input :rfc
-    .col-3
+    .col-md-3
       = f.input :eslogan
-    .col-3
+    .col-md-3
       - if @empresa.logotipo?
         = image_tag(@empresa.logotipo_url, class: "img-thumbnail")
       = f.input :logotipo
       = f.hidden_field :logotipo_cache
-    .col-12
+    .col-md-12
       %h4 registrar domicilio
       = render 'domicilios/domicilio_fields', f: f
 

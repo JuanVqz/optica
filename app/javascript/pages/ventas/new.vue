@@ -2,7 +2,7 @@
   <div id="venta-new">
     <form @submit.prevent="vender">
       <div class="row">
-        <div class="col-4">
+        <div class="col-md-4">
           <div class="form-group">
             <label for="fecha_entrega">
               Fecha entrega <span class="text-danger">*</span>
@@ -13,7 +13,7 @@
           </div>
         </div>
 
-        <div class="col-8">
+        <div class="col-md-8">
           <div class="form-group" :class="errores.cliente ? 'is-invalid' : ''">
             <label for="buscar-clientes" class="form-control-label">
               Seleccionar cliente <span class="text-danger">*</span>
@@ -23,7 +23,7 @@
           </div>
         </div>
 
-        <div class="col-2">
+        <div class="col-md-2">
           <div class="form-group">
             <label for="descuento" class="form-control-label"> Descuento </label>
             <input type="text" :value="descuento | dinero" id="descuento"
@@ -31,7 +31,7 @@
           </div>
         </div>
 
-        <div class="col-2">
+        <div class="col-md-2">
           <div class="form-group">
             <label for="total" class="form-control-label">
               Total <span class="text-danger">*</span>
@@ -43,7 +43,7 @@
           </div>
         </div>
 
-        <div class="col-3">
+        <div class="col-md-3">
           <div class="form-group">
             <label for="efectivo" class="form-control-label">
               Efectivo <span class="text-danger">*</span>
@@ -58,7 +58,7 @@
           </div>
         </div>
 
-        <div class="col-3">
+        <div class="col-md-3">
           <div class="form-group">
             <label for="anticipo" class="form-control-label">
               Anticipo <span class="text-danger">*</span>
@@ -73,7 +73,7 @@
           </div>
         </div>
 
-        <div class="col-2">
+        <div class="col-md-2">
           <div class="form-group">
             <label for="cambio" class="form-control-label">
               Cambio <span class="text-danger">*</span>
@@ -88,7 +88,7 @@
           </div>
         </div>
 
-        <div class="col-12">
+        <div class="col-md-12">
           <div class="form-group">
             <label for="observaciones" class="form-control-label"> Observaciones </label>
             <textarea v-model="venta.observaciones" id="observaciones" class="form-control"></textarea>
@@ -98,7 +98,7 @@
 
       <div v-if="venta_tiene_productos">
         <div class="row">
-          <div class="col-12">
+          <div class="col-md-12">
             <div class="table-responsive">
               <table class="table table-striped table-bordered table-condensed table-hover">
                 <thead>
@@ -153,14 +153,14 @@
       </div>
 
       <div class="row">
-        <div class="col-10">
+        <div class="col-md-10">
           <div class="form-group">
             <label for="buscar-productos">Seleccionar productos</label>
             <select id="buscar-productos" class="form-control"></select>
           </div>
         </div>
 
-        <div class="col-2 align-self-center">
+        <div class="col-md-2 align-self-center">
           <button type="submit" class="btn btn-alt-success">
             <i class="fa fa-save"></i>
             Cobrar
@@ -183,7 +183,7 @@
             </div>
             <div class="block-content">
               <div class="row">
-                <div class="col-6">
+                <div class="col-md-6">
                   <div class="form-group">
                     <label for="cliente_nombre">
                       nombre <span class="text-danger">*</span>
@@ -194,7 +194,7 @@
                     <div class="invalid-feedback" v-if="errores.nombre">{{ errores.nombre[0] }}</div>
                   </div>
                 </div>
-                <div class="col-3">
+                <div class="col-md-3">
                   <div class="form-group">
                     <label for="cliente_telefono">
                       telefono
@@ -204,7 +204,7 @@
                       class="form-control" autocomplete="off"/>
                   </div>
                 </div>
-                <div class="col-3">
+                <div class="col-md-3">
                   <div class="form-group">
                     <label for="cliente_rfc">
                       RFC
@@ -216,35 +216,35 @@
                 </div>
               </div>
               <div class="row">
-                <div class="col-9">
+                <div class="col-md-9">
                   <div class="form-group">
                     <label for="cliente_calle"> calle </label>
                     <input type="text" v-model="cliente.domicilio_attributes.calle"
                       id="cliente_calle" class="form-control" />
                   </div>
                 </div>
-                <div class="col-3">
+                <div class="col-md-3">
                   <div class="form-group">
                     <label for="cliente_numero"> número </label>
                     <input type="text" v-model="cliente.domicilio_attributes.numero"
                       id="cliente_numero" class="form-control" />
                   </div>
                 </div>
-                <div class="col-6">
+                <div class="col-md-6">
                   <div class="form-group">
                     <label for="cliente_colonia"> colonia </label>
                     <input type="text" v-model="cliente.domicilio_attributes.colonia"
                       id="cliente_colonia" class="form-control" />
                   </div>
                 </div>
-                <div class="col-3">
+                <div class="col-md-3">
                   <div class="form-group">
                     <label for="cliente_municipio"> municipio </label>
                     <input type="text" v-model="cliente.domicilio_attributes.municipio"
                       id="cliente_municipio" class="form-control" />
                   </div>
                 </div>
-                <div class="col-3">
+                <div class="col-md-3">
                   <div class="form-group">
                     <label for="cliente_codigo_postal"> código postal </label>
                     <input type="text" v-model="cliente.domicilio_attributes.codigo_postal"

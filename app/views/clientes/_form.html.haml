@@ -1,13 +1,13 @@
 -# frozen_string_literal: true
 = simple_form_for(@cliente) do |f|
   .row
-    .col-4
+    .col-md-4
       = f.input :nombre
-    .col-4
+    .col-md-4
       = f.input :telefono
-    .col-4
+    .col-md-4
       = f.input :rfc
-    .col-12
+    .col-md-12
       %h4 registrar domicilio
       = render 'domicilios/domicilio_fields', f: f
 

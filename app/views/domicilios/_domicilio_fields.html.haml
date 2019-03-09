@@ -1,15 +1,15 @@
 = f.simple_fields_for :domicilio do |f|
   .row
-    .col-4
+    .col-md-4
       = f.input :calle
-    .col-4
+    .col-md-4
       = f.input :numero
-    .col-4
+    .col-md-4
       = f.input :colonia
-    .col-4
+    .col-md-4
       = f.input :codigo_postal
-    .col-4
+    .col-md-4
       = f.input :municipio
-    .col-4
+    .col-md-4
       = f.input :estado, collection: opciones_de_estados
 

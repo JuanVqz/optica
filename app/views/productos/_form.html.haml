@@ -1,29 +1,29 @@
 = simple_form_for producto do |f|
   .row
-    .col-4
+    .col-md-4
       = f.input :nombre
-    .col-4
+    .col-md-4
       = f.input :codigo
     - if tipos.any?
-      .col-4
+      .col-md-4
         = f.input :tipo, collection: tipos
-    .col-3
+    .col-md-3
       = f.input :existencia, as: :integer
-    .col-3
+    .col-md-3
       = f.input :precio_compra, as: :float
-    .col-3
+    .col-md-3
       = f.input :precio_venta, as: :float
-    .col-3.text-center
+    .col-md-3.text-center
       = label_tag '¿Deseas publicar el producto?'
       = f.input :publicado
-    .col-12
+    .col-md-12
       = f.input :descripcion, as: :text
-    .col-2
+    .col-md-2
       = f.input :imagenes, as: :file, input_html: { multiple: true }
-    .col-10
+    .col-md-10
       - if producto.imagenes?
         - producto.imagenes.each do |imagen|
           = image_tag imagen.chica.url
     .block-content.block-content-full.block-content-sm.bg-body-light.font-size-sm
-      .col-12
+      .col-md-12
         = f.submit class: 'btn btn-alt-primary'
