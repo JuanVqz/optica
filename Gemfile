@@ -16,6 +16,7 @@ gem 'simple_form'
 gem 'kaminari'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'pundit'
 
 # gem 'redis', '~> 4.0'
 # gem 'bcrypt', '~> 3.1.7'
