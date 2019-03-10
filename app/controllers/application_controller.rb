@@ -6,6 +6,10 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   rescue_from Pundit::NotAuthorizedError, with: :usuario_no_autorizado
 
+  def current_user
+    current_usuario
+  end
+
   private
 
   def usuario_no_autorizado exception
