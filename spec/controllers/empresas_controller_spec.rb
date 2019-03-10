@@ -2,13 +2,13 @@ require 'rails_helper'
 
 RSpec.describe EmpresasController, type: :controller do
 
-  let(:vendedor) { create :vendedor }
+  let(:administrador) { create :administrador }
   let(:domicilio) { attributes_for :domicilio }
   let(:valid_attributes) { attributes_for :empresa, domicilio_attributes: domicilio }
   let(:invalid_attributes) { attributes_for :empresa, nombre: nil }
 
   before :each do
-    sign_in vendedor
+    sign_in administrador
   end
 
   describe "GET #index" do

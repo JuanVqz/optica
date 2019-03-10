@@ -3,6 +3,7 @@ class EmpresasController < ApplicationController
 
   def index
     @empresas = Empresa.recientes_primero
+    authorize @empresas
   end
 
   def show
@@ -10,6 +11,7 @@ class EmpresasController < ApplicationController
 
   def new
     @empresa = Empresa.new domicilio: Domicilio.new
+    authorize @empresa
   end
 
   def edit
@@ -17,6 +19,7 @@ class EmpresasController < ApplicationController
 
   def create
     @empresa = Empresa.new(empresa_params)
+    authorize @empresa
 
     if @empresa.save
       redirect_to @empresa, notice: 'La empresa fue creada correctamente'
@@ -42,6 +45,7 @@ class EmpresasController < ApplicationController
 
   def set_empresa
     @empresa = Empresa.find(params[:id])
+    authorize @empresa
   end
 
   def empresa_params

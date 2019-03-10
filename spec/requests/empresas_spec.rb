@@ -2,10 +2,10 @@ require 'rails_helper'
 
 RSpec.describe "Empresas", type: :request do
 
-  let(:vendedor) { create :vendedor }
+  let(:administrador) { create :administrador }
 
   before :each do
-    sign_in vendedor
+    sign_in administrador
   end
 
   describe "GET /empresas" do

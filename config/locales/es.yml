@@ -245,3 +245,8 @@ es:
       truncate: "&hellip;"
   pundit:
     default: 'No autorizado para realizar la acción.'
+    empresa_policy:
+      new?: 'No puede crear una empresa!'
+      create?: 'No puede crear una empresa!'
+      edit?: 'No puede editar la empresa!'
+      update?: 'No puede editar la empresa!'
