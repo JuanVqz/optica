@@ -243,3 +243,5 @@ es:
       previous: "&lsaquo; Anterior"
       next: "Siguiente &rsaquo;"
       truncate: "&hellip;"
+  pundit:
+    default: 'No autorizado para realizar la acción.'
