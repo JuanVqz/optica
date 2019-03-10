@@ -51,18 +51,22 @@
             = link_to [:clientes] do
               %i.fa.fa-users
               %span.sidebar-mini-hide Clientes
-          %li
-            = link_to [:administradores] do
-              %i.fa.fa-users
-              %span.sidebar-mini-hide Administradores
-          %li
-            = link_to [:vendedores] do
-              %i.fa.fa-users
-              %span.sidebar-mini-hide Vendedores
-          %li
-            = link_to [:empresas] do
-              %i.fa.fa-building
-              %span.sidebar-mini-hide Empresa
+          - if usuario_es?(:admin, :optica)
+            %li.nav-main-heading
+              %span.sidebar-mini-visible CF
+              %span.sidebar-mini-hidden configuración
+            %li
+              = link_to [:administradores] do
+                %i.fa.fa-users
+                %span.sidebar-mini-hide Administradores
+            %li
+              = link_to [:vendedores] do
+                %i.fa.fa-users
+                %span.sidebar-mini-hide Vendedores
+            %li
+              = link_to [:empresas] do
+                %i.fa.fa-building
+                %span.sidebar-mini-hide Empresa
       .content-side
         %ul.nav-main
           %li
