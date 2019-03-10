@@ -9,6 +9,7 @@ module UsuariosHelper
   def puede?(accion, recurso)
     Pundit.policy(current_usuario, recurso).try "#{accion}?"
   end
+  alias_method :usuario_es?, :puede?
 
   private
 
