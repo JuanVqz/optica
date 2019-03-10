@@ -4,6 +4,7 @@ class ClientesController < ApplicationController
   def index
     @clientes = Cliente.recientes_primero
       .buscar(params[:q]).page(params[:page])
+    authorize @clientes
   end
 
   def show
@@ -11,6 +12,7 @@ class ClientesController < ApplicationController
 
   def new
     @cliente = Cliente.new domicilio: Domicilio.new
+    authorize @cliente
   end
 
   def edit
@@ -18,6 +20,7 @@ class ClientesController < ApplicationController
 
   def create
     @cliente = Cliente.new(cliente_params)
+    authorize @cliente
 
     respond_to do |format|
       if @cliente.save
@@ -41,6 +44,7 @@ class ClientesController < ApplicationController
 
   def set_cliente
     @cliente = Cliente.find(params[:id])
+    authorize @cliente
   end
 
   def cliente_params

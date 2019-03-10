@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe ClientesController, type: :controller do
 
-  let(:vendedor) { create :vendedor }
+  let(:admin) { create :administrador }
 
   let(:domicilio) { attributes_for :domicilio }
   let(:valid_attributes) do
@@ -11,7 +11,7 @@ RSpec.describe ClientesController, type: :controller do
   let(:invalid_attributes) { attributes_for :cliente, nombre: nil }
 
   before :each do
-    sign_in vendedor
+    sign_in admin
   end
 
   describe "GET #index" do

@@ -2,12 +2,12 @@ require 'rails_helper'
 
 RSpec.describe "Clientes", type: :request do
 
-  let(:vendedor) { create :vendedor }
+  let(:admin) { create :administrador }
   let(:atributos_validos) { attributes_for :cliente }
   let(:atributos_invalidos) { attributes_for :cliente, nombre: nil }
 
   before :each do
-    sign_in vendedor
+    sign_in admin
   end
 
   describe "GET /clientes" do

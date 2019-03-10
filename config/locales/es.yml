@@ -260,3 +260,6 @@ es:
       create?: 'No puede crear un administrador!'
       edit?: 'No puede editar al administrador!'
       update?: 'No puede editar al administrador!'
+    cliente_policy:
+      edit?: 'No puede editar al cliente!'
+      update?: 'No puede editar al cliente!'
