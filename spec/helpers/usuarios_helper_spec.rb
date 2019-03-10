@@ -19,4 +19,27 @@ RSpec.describe UsuariosHelper, type: :helper do
       end
     end # context cuando notificar es false
   end # describe "#permitir_notificar"
+
+  describe "#puede?(accion, recurso)" do
+
+    before { allow(helper).to receive(:current_usuario).and_return(usuario) }
+
+    context "cuando es administrador" do
+      let(:usuario) { create :administrador }
+
+      it "puede editar al cliente" do
+        expect(helper.puede?(:edit, :cliente)).to be_truthy
+      end
+    end # context cuando es administrador
+
+    context "cuando es vendedor" do
+      let(:usuario) { create :vendedor }
+
+      it "no puede editar al cliente" do
+        expect(helper.puede?(:edit, :cliente)).to be_falsey
+      end
+    end # context cuando es vendedor
+
+  end # describe "#puede?(accion, recurso)"
+
 end

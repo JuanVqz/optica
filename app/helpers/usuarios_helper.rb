@@ -6,6 +6,10 @@ module UsuariosHelper
     end
   end
 
+  def puede?(accion, recurso)
+    Pundit.policy(current_usuario, recurso).try "#{accion}?"
+  end
+
   private
 
   def badge_notificar modelo
