@@ -21,34 +21,34 @@
             %span.sidebar-mini-visible MP
             %span.sidebar-mini-hidden menú principal
           %li
-            = link_to [:new, :venta] do
+            = link_to [:new, :venta], class: ruta_actual(new_venta_path) do
               %i.fa.fa-shopping-cart
               %span.sidebar-mini-hide Punto de venta
           %li
-            = link_to [:ventas] do
+            = link_to [:ventas], class: ruta_actual(ventas_path) do
               %i.fa.fa-history
               %span.sidebar-mini-hide Historial de ventas
           %li.nav-main-heading
             %span.sidebar-mini-visible CS
             %span.sidebar-mini-hidden catálogos
           %li
-            = link_to [:armazones] do
+            = link_to [:armazones], class: ruta_actual(armazones_path) do
               %i.fa.fa-adjust
               %span.sidebar-mini-hide Armazones
           %li
-            = link_to [:lentes] do
+            = link_to [:lentes], class: ruta_actual(lentes_path) do
               %i.si.si-eyeglasses
               %span.sidebar-mini-hide Lentes
           %li
-            = link_to [:micas] do
+            = link_to [:micas], class: ruta_actual(micas_path) do
               %i.fa.fa-clone
               %span.sidebar-mini-hide Micas
           %li
-            = link_to [:tratamientos] do
+            = link_to [:tratamientos], class: ruta_actual(tratamientos_path) do
               %i.fa.fa-bookmark
               %span.sidebar-mini-hide Tratamientos
           %li
-            = link_to [:clientes] do
+            = link_to [:clientes], class: ruta_actual(clientes_path) do
               %i.fa.fa-users
               %span.sidebar-mini-hide Clientes
           - if usuario_es?(:admin, :optica)
@@ -56,15 +56,15 @@
               %span.sidebar-mini-visible CF
               %span.sidebar-mini-hidden configuración
             %li
-              = link_to [:administradores] do
+              = link_to [:administradores], class: ruta_actual(administradores_path) do
                 %i.fa.fa-users
                 %span.sidebar-mini-hide Administradores
             %li
-              = link_to [:vendedores] do
+              = link_to [:vendedores], class: ruta_actual(vendedores_path) do
                 %i.fa.fa-users
                 %span.sidebar-mini-hide Vendedores
             %li
-              = link_to [:empresas] do
+              = link_to [:empresas], class: ruta_actual(empresas_path) do
                 %i.fa.fa-building
                 %span.sidebar-mini-hide Empresa
       .content-side

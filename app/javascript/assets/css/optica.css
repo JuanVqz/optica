@@ -8,3 +8,7 @@
   top: 70px;
   z-index: 999;
 }
+
+.nav-main a.active {
+  color: #48a7ea;
+}
