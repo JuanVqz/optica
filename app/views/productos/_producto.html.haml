@@ -12,11 +12,15 @@
   %tr
     %th precio de venta:
     %td= number_to_currency producto.precio_venta
+    - if usuario_es?(:admin, :optica)
+      %th precio de compra:
+      %td= number_to_currency producto.precio_compra
+    - else
+      %th
+      %td
+  %tr
     %th tipo de producto:
     %td= producto.tipo
-  %tr
-    %th precio de compra:
-    %td= number_to_currency producto.precio_compra
     %th registrado por:
     %td= producto.usuario
   %tr

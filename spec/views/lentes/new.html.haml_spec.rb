@@ -4,6 +4,8 @@ RSpec.describe "lentes/new", type: :view do
   let(:vendedor) { create :vendedor }
 
   before(:each) do
+    allow(view).to receive(:current_usuario).and_return(usuario)
+
     assign(:lente, Lente.new(
       nombre: "lente 2",
       codigo: "LN2",
@@ -16,24 +18,39 @@ RSpec.describe "lentes/new", type: :view do
     ))
   end
 
-  it "muestra el formulario de nuevo lente" do
-    render
+  context "cuando es administrador" do
+    let(:usuario) { create :administrador }
 
-    assert_select "form[action=?][method=?]", lentes_path, "post" do
+    it "muestra precio_compra en el formulario" do
+      render
 
-      assert_select "input[name=?]", "lente[nombre]"
-
-      assert_select "input[name=?]", "lente[codigo]"
-
-      assert_select "textarea[name=?]", "lente[descripcion]"
-
-      assert_select "input[name=?]", "lente[precio_venta]"
-
-      assert_select "input[name=?]", "lente[precio_compra]"
-
-      assert_select "input[name=?]", "lente[existencia]"
-
-      assert_select "select[name=?]", "lente[tipo]"
+      assert_select "form[action=?][method=?]", lentes_path, "post" do
+        assert_select "input[name=?]", "lente[nombre]"
+        assert_select "input[name=?]", "lente[codigo]"
+        assert_select "textarea[name=?]", "lente[descripcion]"
+        assert_select "input[name=?]", "lente[precio_venta]"
+        assert_select "input[name=?]", "lente[precio_compra]"
+        assert_select "input[name=?]", "lente[existencia]"
+        assert_select "select[name=?]", "lente[tipo]"
+      end
     end
-  end
+  end # context cuando es administrador
+
+  context "cuando es vendedor" do
+    let(:usuario) { create :vendedor }
+
+    it "no muestra precio_compra en el formulario" do
+      render
+
+      assert_select "form[action=?][method=?]", lentes_path, "post" do
+        assert_select "input[name=?]", "lente[nombre]"
+        assert_select "input[name=?]", "lente[codigo]"
+        assert_select "textarea[name=?]", "lente[descripcion]"
+        assert_select "input[name=?]", "lente[precio_venta]"
+        assert_select "input[name=?]", "lente[existencia]"
+        assert_select "select[name=?]", "lente[tipo]"
+      end
+    end
+  end # context cuando es vendedor
+
 end

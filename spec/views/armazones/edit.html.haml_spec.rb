@@ -4,6 +4,8 @@ RSpec.describe "armazones/edit", type: :view do
   let(:vendedor) { create :vendedor }
 
   before(:each) do
+    allow(view).to receive(:current_usuario).and_return(usuario)
+
     @armazon = assign(:armazon, Armazon.create!(
       nombre: "armazon 2",
       codigo: "AZ2",
@@ -16,24 +18,39 @@ RSpec.describe "armazones/edit", type: :view do
     ))
   end
 
-  it "muestra el formulario de editar armazon" do
-    render
+  context "cuando es administrador" do
+    let(:usuario) { create :administrador }
 
-    assert_select "form[action=?][method=?]", armazon_path(@armazon), "post" do
+    it "muestra precio_compra en el formulario" do
+      render
 
-      assert_select "input[name=?]", "armazon[nombre]"
-
-      assert_select "input[name=?]", "armazon[codigo]"
-
-      assert_select "textarea[name=?]", "armazon[descripcion]"
-
-      assert_select "input[name=?]", "armazon[precio_venta]"
-
-      assert_select "input[name=?]", "armazon[precio_compra]"
-
-      assert_select "input[name=?]", "armazon[existencia]"
-
-      assert_select "select[name=?]", "armazon[tipo]"
+      assert_select "form[action=?][method=?]", armazon_path(@armazon), "post" do
+        assert_select "input[name=?]", "armazon[nombre]"
+        assert_select "input[name=?]", "armazon[codigo]"
+        assert_select "textarea[name=?]", "armazon[descripcion]"
+        assert_select "input[name=?]", "armazon[precio_venta]"
+        assert_select "input[name=?]", "armazon[precio_compra]"
+        assert_select "input[name=?]", "armazon[existencia]"
+        assert_select "select[name=?]", "armazon[tipo]"
+      end
     end
-  end
+  end # context cuando es administrador
+
+  context "cuando es vendedor" do
+    let(:usuario) { create :vendedor }
+
+    it "no muestra precio_compra en el formulario" do
+      render
+
+      assert_select "form[action=?][method=?]", armazon_path(@armazon), "post" do
+        assert_select "input[name=?]", "armazon[nombre]"
+        assert_select "input[name=?]", "armazon[codigo]"
+        assert_select "textarea[name=?]", "armazon[descripcion]"
+        assert_select "input[name=?]", "armazon[precio_venta]"
+        assert_select "input[name=?]", "armazon[existencia]"
+        assert_select "select[name=?]", "armazon[tipo]"
+      end
+    end
+  end # context cuando es vendedor
+
 end

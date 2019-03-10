@@ -1,20 +1,20 @@
 require 'rails_helper'
 
-RSpec.describe "armazones/show", type: :view do
+RSpec.describe "micas/show", type: :view do
 
   let(:vendedor) { create :vendedor }
 
   before(:each) do
     allow(view).to receive(:current_usuario).and_return(usuario)
 
-    @armazon = assign(:armazon, Armazon.create!(
-      nombre: "armazon 2",
-      codigo: "AZ2",
-      descripcion: "descripción del armazones 2",
+    @mica = assign(:mica, Mica.create!(
+      nombre: "mica 2",
+      codigo: "MC2",
+      descripcion: "descripción de la mica 2",
       precio_venta: 100,
       precio_compra: 0,
       existencia: 10,
-      tipo: "sobrepuesto",
+      tipo: "monofocal",
       usuario: vendedor
     ))
   end
@@ -26,9 +26,9 @@ RSpec.describe "armazones/show", type: :view do
       render
 
       expect(rendered).to match(/0/)
-      expect(rendered).to match(/armazon 2/)
-      expect(rendered).to match(/AZ2/)
-      expect(rendered).to match(/sobrepuesto/)
+      expect(rendered).to match(/mica 2/)
+      expect(rendered).to match(/MC2/)
+      expect(rendered).to match(/monofocal/)
     end
   end # context cuando es administrador
 
@@ -38,9 +38,9 @@ RSpec.describe "armazones/show", type: :view do
     it "no muestra precio_compra" do
       render
 
-      expect(rendered).to match(/armazon 2/)
-      expect(rendered).to match(/AZ2/)
-      expect(rendered).to match(/sobrepuesto/)
+      expect(rendered).to match(/mica 2/)
+      expect(rendered).to match(/MC2/)
+      expect(rendered).to match(/monofocal/)
     end
   end # context cuando es vendedor
 

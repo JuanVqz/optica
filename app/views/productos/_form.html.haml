@@ -10,9 +10,10 @@
     .col-md-3
       = f.input :existencia, as: :integer
     .col-md-3
-      = f.input :precio_compra, as: :float
-    .col-md-3
       = f.input :precio_venta, as: :float
+    .col-md-3
+      - if usuario_es?(:admin, :optica)
+        = f.input :precio_compra, as: :float
     .col-md-3.text-center
       = label_tag '¿Deseas publicar el producto?'
       = f.input :publicado

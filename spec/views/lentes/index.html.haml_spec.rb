@@ -30,7 +30,7 @@ RSpec.describe "lentes/index", type: :view do
 
   it "muestra la lista de lentes" do
     render
-    assert_select "tr>td", :text => "10".to_s, :count => 2
-    assert_select "tr>td", :text => "polarizado".to_s, :count => 1
+    assert_select "tr>td", text: "10".to_s, count: 2
+    assert_select "tr>td", text: "polarizado".to_s, count: 1
   end
 end
