@@ -3,6 +3,7 @@ class AdministradoresController < ApplicationController
 
   def index
     @administradores = Administrador.page(params[:page])
+    authorize @administradores
   end
 
   def show
@@ -10,6 +11,7 @@ class AdministradoresController < ApplicationController
 
   def new
     @administrador = Administrador.new
+    authorize @administrador
   end
 
   def edit
@@ -17,6 +19,7 @@ class AdministradoresController < ApplicationController
 
   def create
     @administrador = Administrador.new(administrador_params)
+    authorize @administrador
 
     if @administrador.save
       redirect_to @administrador, notice: 'El administrador fue creado correctamente'
@@ -37,6 +40,7 @@ class AdministradoresController < ApplicationController
 
   def set_administrador
     @administrador = Administrador.find(params[:id])
+    authorize @administrador
   end
 
   def administrador_params

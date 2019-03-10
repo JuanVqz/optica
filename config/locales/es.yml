@@ -255,3 +255,8 @@ es:
       create?: 'No puede crear un vendedor!'
       edit?: 'No puede editar al vendedor!'
       update?: 'No puede editar al vendedor!'
+    administrador_policy:
+      new?: 'No puede crear un administrador!'
+      create?: 'No puede crear un administrador!'
+      edit?: 'No puede editar al administrador!'
+      update?: 'No puede editar al administrador!'
