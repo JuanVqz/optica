@@ -250,3 +250,8 @@ es:
       create?: 'No puede crear una empresa!'
       edit?: 'No puede editar la empresa!'
       update?: 'No puede editar la empresa!'
+    vendedor_policy:
+      new?: 'No puede crear un vendedor!'
+      create?: 'No puede crear un vendedor!'
+      edit?: 'No puede editar al vendedor!'
+      update?: 'No puede editar al vendedor!'

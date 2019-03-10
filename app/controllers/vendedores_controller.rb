@@ -3,6 +3,7 @@ class VendedoresController < ApplicationController
 
   def index
     @vendedores = Vendedor.recientes_primero.page(params[:page])
+    authorize @vendedores
   end
 
   def show
@@ -10,6 +11,7 @@ class VendedoresController < ApplicationController
 
   def new
     @vendedor = Vendedor.new
+    authorize @vendedor
   end
 
   def edit
@@ -17,6 +19,7 @@ class VendedoresController < ApplicationController
 
   def create
     @vendedor = Vendedor.new(vendedor_params)
+    authorize @vendedor
 
     if @vendedor.save
       redirect_to @vendedor, notice: 'El vendedor fue creado correctamente'
@@ -37,6 +40,7 @@ class VendedoresController < ApplicationController
 
   def set_vendedor
     @vendedor = Vendedor.find(params[:id])
+    authorize @vendedor
   end
 
   def vendedor_params
