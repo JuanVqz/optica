@@ -40,6 +40,7 @@
     = link_to [:clientes], class: 'btn btn-alt-secondary' do
       %i.si.si-arrow-left
       regresar
-    = link_to [:edit, @cliente], class: 'btn btn-alt-warning pull-right' do
-      %i.si.si-pencil
-      editar
+    - if puede?(:edit, :cliente)
+      = link_to [:edit, @cliente], class: 'btn btn-alt-warning pull-right' do
+        %i.si.si-pencil
+        editar

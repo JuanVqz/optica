@@ -4,6 +4,8 @@ RSpec.describe "clientes/index", type: :view do
   let(:domicilio) { attributes_for :domicilio }
 
   before(:each) do
+    allow(view).to receive(:current_usuario).and_return(usuario)
+
     assign(:clientes, Kaminari.paginate_array([
       Cliente.create!(
         :nombre => "Nombre",
@@ -20,10 +22,31 @@ RSpec.describe "clientes/index", type: :view do
     ]).page(1))
   end
 
-  it "muestra la lista de clientes" do
-    render
-    assert_select "tr>td", :text => "Nombre".to_s, :count => 1
-    assert_select "tr>td", :text => "Rfc".to_s, :count => 2
-    assert_select "tr>td", :text => "Telefono".to_s, :count => 2
-  end
+  context "cuando es administrador" do
+    let(:usuario) { create :administrador }
+
+    it "debe mostrar el boton editar" do
+      render
+
+      expect(rendered).to match(/editar/)
+
+      assert_select "tr>td", :text => "Nombre".to_s, :count => 1
+      assert_select "tr>td", :text => "Rfc".to_s, :count => 2
+      assert_select "tr>td", :text => "Telefono".to_s, :count => 2
+    end
+  end # context cuando es administrador
+
+  context "cuando es vendedor" do
+    let(:usuario) { create :vendedor }
+
+    it "no debe mostrar el boton editar" do
+      render
+
+      expect(rendered).not_to match(/editar/)
+
+      assert_select "tr>td", :text => "Nombre".to_s, :count => 1
+      assert_select "tr>td", :text => "Rfc".to_s, :count => 2
+      assert_select "tr>td", :text => "Telefono".to_s, :count => 2
+    end
+  end # context cuando es vendedor
 end

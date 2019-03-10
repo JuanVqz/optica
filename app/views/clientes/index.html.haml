@@ -30,9 +30,10 @@
                   = link_to cliente, class: 'btn btn-alt-info' do
                     %i.si.si-eye
                     detalles
-                  = link_to [:edit, cliente], class: 'btn btn-alt-warning' do
-                    %i.si.si-pencil
-                    editar
+                  - if puede?(:edit, :cliente)
+                    = link_to [:edit, cliente], class: 'btn btn-alt-warning' do
+                      %i.si.si-pencil
+                      editar
     %tfoot
       %tr
         %td{ colspan: 6 }
