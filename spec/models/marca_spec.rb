@@ -4,6 +4,8 @@ RSpec.describe Marca, type: :model do
   it { should validate_presence_of :nombre }
   it { should validate_uniqueness_of(:nombre).case_insensitive }
 
+  it { should have_many :productos }
+
   describe ".buscar" do
     let!(:marcas) { create_list :marca, 4 }
     let!(:marca) { create :marca, nombre: 'OAKLEY', descripcion: 'zzz' }

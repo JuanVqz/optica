@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Producto, type: :model do
+  it { should belong_to :marca }
   it { should belong_to :usuario }
   it { should have_many :vendidos }
   it { should have_many(:ventas).through :vendidos }
