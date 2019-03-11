@@ -39,6 +39,15 @@ RSpec.describe ApplicationRecord, type: :model do
       end
     end # context Lente
 
+    context "Marca" do
+      let(:marca_ayer) { create :marca, created_at: 1.day.ago }
+      let(:marca_hoy) { create :marca, created_at: Date.current }
+
+      it "debe mostrar el último primero" do
+        expect(Marca.recientes_primero).to eq [marca_hoy, marca_ayer]
+      end
+    end # context Marca
+
     context "Mica" do
       let(:mica_ayer) { create :mica, created_at: 1.day.ago }
       let(:mica_hoy) { create :mica, created_at: Date.current }

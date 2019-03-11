@@ -2,7 +2,7 @@ class MarcasController < ApplicationController
   before_action :set_marca, only: [:show, :edit, :update, :destroy]
 
   def index
-    @marcas = Marca.buscar(params[:q]).page(params[:page])
+    @marcas = Marca.recientes_primero.buscar(params[:q]).page(params[:page])
   end
 
   def show
