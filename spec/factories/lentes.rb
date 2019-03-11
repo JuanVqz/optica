@@ -9,5 +9,6 @@ FactoryBot.define do
     publicado { false }
     tipo { ['polarizado', 'filtro uv'].sample }
     association :usuario, factory: :vendedor
+    marca
   end
 end

@@ -8,5 +8,6 @@ FactoryBot.define do
     existencia { 1 }
     publicado { false }
     tipo { nil }
+    marca
   end
 end

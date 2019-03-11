@@ -9,5 +9,6 @@ FactoryBot.define do
     publicado { false }
     tipo { nil }
     association :usuario, factory: :vendedor
+    marca
   end
 end
