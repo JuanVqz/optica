@@ -7,7 +7,7 @@ class Producto < ApplicationRecord
   has_many :ventas, through: :vendidos
 
   validates :nombre, :codigo, :existencia, :precio_venta,
-    :usuario, :type, presence: true
+    :usuario, :type, :marca_id, presence: true
   validates :precio_venta, numericality: { greater_than: 0 }
   validates :codigo, uniqueness: { case_sensitive: false }
 
