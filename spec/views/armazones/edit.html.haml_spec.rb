@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "armazones/edit", type: :view do
   let(:vendedor) { create :vendedor }
+  let(:marca) { create :marca }
 
   before(:each) do
     allow(view).to receive(:current_usuario).and_return(usuario)
@@ -14,7 +15,8 @@ RSpec.describe "armazones/edit", type: :view do
       precio_compra: 0,
       existencia: 10,
       tipo: "sobrepuesto",
-      usuario: vendedor
+      usuario: vendedor,
+      marca: marca
     ))
   end
 
@@ -27,6 +29,7 @@ RSpec.describe "armazones/edit", type: :view do
       assert_select "form[action=?][method=?]", armazon_path(@armazon), "post" do
         assert_select "input[name=?]", "armazon[nombre]"
         assert_select "input[name=?]", "armazon[codigo]"
+        assert_select "select[name=?]", "armazon[marca_id]"
         assert_select "textarea[name=?]", "armazon[descripcion]"
         assert_select "input[name=?]", "armazon[precio_venta]"
         assert_select "input[name=?]", "armazon[precio_compra]"
@@ -45,6 +48,7 @@ RSpec.describe "armazones/edit", type: :view do
       assert_select "form[action=?][method=?]", armazon_path(@armazon), "post" do
         assert_select "input[name=?]", "armazon[nombre]"
         assert_select "input[name=?]", "armazon[codigo]"
+        assert_select "select[name=?]", "armazon[marca_id]"
         assert_select "textarea[name=?]", "armazon[descripcion]"
         assert_select "input[name=?]", "armazon[precio_venta]"
         assert_select "input[name=?]", "armazon[existencia]"

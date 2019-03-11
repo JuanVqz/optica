@@ -5,6 +5,7 @@
       detalles del tratamiento #{@tratamiento}
     .block-options
       .block-options-item
+        registrado por #{@tratamiento.usuario}
   .block-content
     = render 'productos/producto', producto: @tratamiento
 

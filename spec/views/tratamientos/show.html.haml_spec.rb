@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe "tratamientos/show", type: :view do
 
   let(:vendedor) { create :vendedor }
+  let(:marca) { create :marca }
 
   before(:each) do
     allow(view).to receive(:current_usuario).and_return(usuario)
@@ -15,7 +16,8 @@ RSpec.describe "tratamientos/show", type: :view do
       precio_compra: 0,
       existencia: 10,
       tipo: nil,
-      usuario: vendedor
+      usuario: vendedor,
+      marca: marca
     ))
   end
 

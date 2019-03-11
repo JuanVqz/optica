@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "lentes/edit", type: :view do
   let(:vendedor) { create :vendedor }
+  let(:marca) { create :marca }
 
   before(:each) do
     allow(view).to receive(:current_usuario).and_return(usuario)
@@ -14,7 +15,8 @@ RSpec.describe "lentes/edit", type: :view do
       precio_compra: 0,
       existencia: 10,
       tipo: "polarizado",
-      usuario: vendedor
+      usuario: vendedor,
+      marca: marca
     ))
   end
 
@@ -27,6 +29,7 @@ RSpec.describe "lentes/edit", type: :view do
       assert_select "form[action=?][method=?]", lente_path(@lente), "post" do
         assert_select "input[name=?]", "lente[nombre]"
         assert_select "input[name=?]", "lente[codigo]"
+        assert_select "select[name=?]", "lente[marca_id]"
         assert_select "textarea[name=?]", "lente[descripcion]"
         assert_select "input[name=?]", "lente[precio_venta]"
         assert_select "input[name=?]", "lente[precio_compra]"
@@ -45,6 +48,7 @@ RSpec.describe "lentes/edit", type: :view do
       assert_select "form[action=?][method=?]", lente_path(@lente), "post" do
         assert_select "input[name=?]", "lente[nombre]"
         assert_select "input[name=?]", "lente[codigo]"
+        assert_select "select[name=?]", "lente[marca_id]"
         assert_select "textarea[name=?]", "lente[descripcion]"
         assert_select "input[name=?]", "lente[precio_venta]"
         assert_select "input[name=?]", "lente[existencia]"

@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "micas/index", type: :view do
   let(:vendedor) { create :vendedor }
+  let(:marca) { create :marca }
 
   before(:each) do
     assign(:micas, Kaminari.paginate_array([
@@ -13,7 +14,8 @@ RSpec.describe "micas/index", type: :view do
         precio_compra: 0,
         existencia: 10,
         tipo: "monofocal",
-        usuario: vendedor
+        usuario: vendedor,
+        marca: marca
       ),
       Mica.create!(
         nombre: "mica 2",
@@ -23,7 +25,8 @@ RSpec.describe "micas/index", type: :view do
         precio_compra: 0,
         existencia: 10,
         tipo: "monofocal",
-        usuario: vendedor
+        usuario: vendedor,
+        marca: marca
       ),
     ]).page(1))
   end

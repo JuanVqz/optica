@@ -1,11 +1,13 @@
 = simple_form_for producto do |f|
   .row
-    .col-md-4
+    .col-md-3
       = f.input :nombre
-    .col-md-4
+    .col-md-3
       = f.input :codigo
-    - if tipos.any?
-      .col-md-4
+    .col-md-3
+      = f.input :marca_id, collection: opciones_de_marcas
+    .col-md-3
+      - if tipos.any?
         = f.input :tipo, collection: tipos
     .col-md-3
       = f.input :existencia, as: :integer

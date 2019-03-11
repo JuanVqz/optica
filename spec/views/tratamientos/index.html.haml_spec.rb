@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "tratamientos/index", type: :view do
   let(:vendedor) { create :vendedor }
+  let(:marca) { create :marca }
 
   before(:each) do
     assign(:tratamientos, Kaminari.paginate_array([
@@ -13,7 +14,8 @@ RSpec.describe "tratamientos/index", type: :view do
         precio_compra: 0,
         existencia: 10,
         tipo: nil,
-        usuario: vendedor
+        usuario: vendedor,
+        marca: marca
       ),
       Tratamiento.create!(
         nombre: "tratamiento 2",
@@ -23,7 +25,8 @@ RSpec.describe "tratamientos/index", type: :view do
         precio_compra: 0,
         existencia: 10,
         tipo: nil,
-        usuario: vendedor
+        usuario: vendedor,
+        marca: marca
       ),
     ]).page(1))
   end

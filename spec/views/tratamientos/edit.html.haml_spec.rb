@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "tratamientos/edit", type: :view do
   let(:vendedor) { create :vendedor }
+  let(:marca) { create :marca }
 
   before(:each) do
     allow(view).to receive(:current_usuario).and_return(usuario)
@@ -14,7 +15,8 @@ RSpec.describe "tratamientos/edit", type: :view do
       precio_compra: 0,
       existencia: 10,
       tipo: nil,
-      usuario: vendedor
+      usuario: vendedor,
+      marca: marca
     ))
   end
 
@@ -27,6 +29,7 @@ RSpec.describe "tratamientos/edit", type: :view do
       assert_select "form[action=?][method=?]", tratamiento_path(@tratamiento), "post" do
         assert_select "input[name=?]", "tratamiento[nombre]"
         assert_select "input[name=?]", "tratamiento[codigo]"
+        assert_select "select[name=?]", "tratamiento[marca_id]"
         assert_select "textarea[name=?]", "tratamiento[descripcion]"
         assert_select "input[name=?]", "tratamiento[precio_venta]"
         assert_select "input[name=?]", "tratamiento[precio_compra]"
@@ -44,6 +47,7 @@ RSpec.describe "tratamientos/edit", type: :view do
       assert_select "form[action=?][method=?]", tratamiento_path(@tratamiento), "post" do
         assert_select "input[name=?]", "tratamiento[nombre]"
         assert_select "input[name=?]", "tratamiento[codigo]"
+        assert_select "select[name=?]", "tratamiento[marca_id]"
         assert_select "textarea[name=?]", "tratamiento[descripcion]"
         assert_select "input[name=?]", "tratamiento[precio_venta]"
         assert_select "input[name=?]", "tratamiento[existencia]"
