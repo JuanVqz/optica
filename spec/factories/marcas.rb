@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :marca do
-    nombre { "MyString" }
+    sequence(:nombre) { |n| "MyString#{n}" }
     descripcion { "MyString" }
   end
 end

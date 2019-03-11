@@ -5,7 +5,7 @@
       Lista de marcas
     .block-options
       .block-options-item
-        -#= render 'shared/buscador', recursos_ruta: marcas_path
+        = render 'shared/buscador', recursos_ruta: marcas_path
       .block-options-item
         = link_to [:new, :marca], class: 'btn btn-alt-secondary' do
           %i.fa.fa-plus
