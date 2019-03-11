@@ -1,0 +1,10 @@
+-# frozen_string_literal: true
+= simple_form_for(@marca) do |f|
+  = f.input :nombre
+  = f.input :descripcion, as: :text
+
+  .block-content.block-content-full.block-content-sm.bg-body-light.font-size-sm
+    = link_to :back, class: 'btn btn-alt-secondary' do
+      %i.fa.fa-arrow-left
+      regresar
+    = f.submit class: 'btn btn-alt-success pull-right'

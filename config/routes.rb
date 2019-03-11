@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   resources :clientes, except: [:destroy]
   resources :empresas
   resources :lentes
+  resources :marcas
   resources :micas
   resources :tratamientos
   resources :vendedores, except: [:destroy]

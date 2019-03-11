@@ -51,6 +51,11 @@
             = link_to [:clientes], class: ruta_actual(clientes_path) do
               %i.fa.fa-users
               %span.sidebar-mini-hide Clientes
+          %li
+            = link_to [:marcas], class: ruta_actual(marcas_path) do
+              %i.fa.fa-asterisk
+              %span.sidebar-mini-hide Marcas
+
           - if usuario_es?(:admin, :optica)
             %li.nav-main-heading
               %span.sidebar-mini-visible CF

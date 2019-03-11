@@ -1,0 +1,42 @@
+.block.block-themed
+  .block-header.bg-primary-dark
+    %h3.block-title
+      %i.fa.fa-asterisk
+      Lista de marcas
+    .block-options
+      .block-options-item
+        -#= render 'shared/buscador', recursos_ruta: marcas_path
+      .block-options-item
+        = link_to [:new, :marca], class: 'btn btn-alt-secondary' do
+          %i.fa.fa-plus
+          registrar marca
+  .block-content
+    .table-responsive
+      %table.table.table-striped.table-hover.table-sm.table-vcenter
+        %thead
+          %tr
+            %th nombre
+            %th actualizada el
+            %th.text-center{:style => "width: 100px;"} Acciones
+        %tbody
+          - @marcas.each do |marca|
+            %tr
+              %td= marca
+              %td= l marca.updated_at, format: :short
+              %td
+                .btn-group
+                  = link_to marca, class: 'btn btn-alt-info' do
+                    %i.si.si-eye
+                    detalles
+                  = link_to [:edit, marca], class: 'btn btn-alt-warning' do
+                    %i.si.si-pencil
+                    editar
+    %tfoot
+      %tr
+        %td{ colspan: 7 }
+          .row
+            .col-6
+              = paginate @marcas
+            .col-6
+              .pull-right
+                = page_entries_info @marcas

@@ -1,0 +1,29 @@
+.block.block-themed
+  .block-header.bg-primary-dark
+    %h3.block-title
+      %i.si.si-eye
+      detalles de la marca #{@marca}
+    .block-options
+      .block-options-item
+  .block-content
+    %table.table.table-hover.table-sm.table-vcenter
+      %tr
+        %th nombre:
+        %td= @marca
+      %tr
+        %th descripción:
+        %td= @marca.descripcion
+      %tr
+        %th creada el:
+        %td= l @marca.created_at, format: :short
+      %tr
+        %th actualizada el:
+        %td= l @marca.updated_at, format: :short
+
+  .block-content.block-content-full.block-content-sm.bg-body-light.font-size-sm
+    = link_to [:marcas], class: 'btn btn-alt-secondary' do
+      %i.si.si-arrow-left
+      regresar
+    = link_to [:edit, @marca], class: 'btn btn-alt-warning pull-right' do
+      %i.si.si-pencil
+      editar
