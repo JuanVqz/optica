@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_11_140624) do
+ActiveRecord::Schema.define(version: 2019_03_11_152025) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,6 +78,8 @@ ActiveRecord::Schema.define(version: 2019_03_11_140624) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "usuario_id"
+    t.bigint "marca_id"
+    t.index ["marca_id"], name: "index_productos_on_marca_id"
     t.index ["usuario_id"], name: "index_productos_on_usuario_id"
   end
 
@@ -136,6 +138,7 @@ ActiveRecord::Schema.define(version: 2019_03_11_140624) do
   end
 
   add_foreign_key "pagos", "ventas"
+  add_foreign_key "productos", "marcas"
   add_foreign_key "productos", "usuarios"
   add_foreign_key "vendidos", "productos"
   add_foreign_key "vendidos", "ventas"
