@@ -3,9 +3,10 @@ require 'rails_helper'
 RSpec.describe LentesController, type: :controller do
 
   let(:vendedor) { create :vendedor }
+  let(:marca) { create :marca }
 
   let(:valid_attributes) do
-    attributes_for :lente, usuario_id: vendedor.id
+    attributes_for :lente, usuario_id: vendedor.id, marca_id: marca.id
   end
   let(:invalid_attributes) { attributes_for :lente, nombre: nil }
 
