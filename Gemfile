@@ -17,6 +17,8 @@ gem 'kaminari'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'pundit'
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary', '0.12.3'
 
 # gem 'redis', '~> 4.0'
 # gem 'bcrypt', '~> 3.1.7'
