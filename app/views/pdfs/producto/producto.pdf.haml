@@ -1,0 +1,34 @@
+%p.texto-centro.titulo DETALLE DE #{@producto.class}
+%table.tabla
+  %tr
+    %th código:
+    %td= @producto.codigo
+    %th nombre:
+    %td= @producto.nombre
+  %tr
+    %th existencia:
+    %td= @producto.existencia
+    %th estado:
+    %td= estado_de_publicacion @producto
+  %tr
+    %th precio de venta:
+    %td= number_to_currency @producto.precio_venta
+    %th registrado por:
+    %td= @producto.usuario
+  %tr
+    %th tipo de producto:
+    %td= @producto.tipo
+    %th marca:
+    %td= @producto.marca
+  %tr
+    %th registrado el:
+    %td= l @producto.created_at, format: :long
+    %th actualizado el:
+    %td= l @producto.updated_at, format: :long
+  %tr
+    %th descripción:
+    %td{ colspan: 3 }= @producto.descripcion
+
+.text-center
+  - @producto.imagenes.each do |imagen|
+    = image_tag imagen.chica.path

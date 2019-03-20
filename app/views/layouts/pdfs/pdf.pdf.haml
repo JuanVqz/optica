@@ -1,0 +1,23 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    :css
+      .tabla {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+      }
+      td, th { border-bottom: 1px solid #ddd; text-align: left; }
+      .titulo {
+        min-height: 28px;
+        font-size: 1.142857rem;
+        font-weight: 400;
+        line-height: 28px;
+        text-transform: uppercase;
+      }
+      .texto-centro { text-align: center; }
+      .texto-der { text-align: right; }
+      .fila div { display: inline-block; }
+      .col50 { width: 49%; vertical-align: middle; }
+  %body
+    = yield
