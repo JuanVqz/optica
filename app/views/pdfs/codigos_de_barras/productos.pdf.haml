@@ -1,0 +1,5 @@
+.row
+  - @productos.each do |producto|
+    .col-xs-2
+      = codigo_de_barras producto
+      %p.codigo= producto.codigo

@@ -76,6 +76,10 @@
               = link_to [:tiendas], class: ruta_actual(tiendas_path) do
                 %i.fa.fa-shopping-bag
                 %span.sidebar-mini-hide Tienda
+            %li
+              = link_to [:codigos_de_barras], class: ruta_actual(codigos_de_barras_path) do
+                %i.fa.fa-barcode
+                %span.sidebar-mini-hide Códigos de barras
       .content-side
         %ul.nav-main
           %li

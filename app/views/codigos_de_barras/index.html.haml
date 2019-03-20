@@ -1,0 +1,37 @@
+.block.block-themed
+  .block-header.bg-primary-dark
+    %h3.block-title
+      %i.fa.fa-barcode
+      Códigos de barras
+    .block-options
+  .block-content
+    .row.gutters-tiny.js-appear-enabled.animated.fadeIn
+      .col-md-3
+        = link_to [:productos_codigos_de_barras, tipo: :armazon, format: :pdf],
+          class: 'block block-transparent bg-default', target: '_blank' do
+          .block-content.block-content-full
+            .mb-20
+              %i.fa.fa-adjust.fa-4x.text-white
+            .font-size-h4.font-w600.text-white Armazónes
+      .col-md-3
+        = link_to [:productos_codigos_de_barras, tipo: :lente, format: :pdf],
+          class: 'block block-transparent bg-info', target: '_blank' do
+          .block-content.block-content-full
+            .mb-20
+              %i.si.si-eyeglasses.fa-4x.text-white
+            .font-size-h4.font-w600.text-white Lentes
+      .col-md-3
+        = link_to [:productos_codigos_de_barras, tipo: :mica, format: :pdf],
+          class: 'block block-transparent bg-warning', target: '_blank' do
+          .block-content.block-content-full
+            .mb-20
+              %i.fa.fa-clone.fa-4x.text-white
+            .font-size-h4.font-w600.text-white Mica
+      .col-md-3
+        = link_to [:productos_codigos_de_barras, tipo: :tratamiento, format: :pdf],
+          class: 'block block-transparent bg-info', target: '_blank' do
+          .block-content.block-content-full
+            .mb-20
+              %i.fa.fa-bookmark.fa-4x.text-white
+            .font-size-h4.font-w600.text-white Tratamiento
+

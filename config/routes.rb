@@ -14,6 +14,9 @@ Rails.application.routes.draw do
   resources :administradores, except: [:destroy]
   resources :armazones
   resources :clientes, except: [:destroy]
+  resources :codigos_de_barras, only: :index do
+    get 'productos', on: :collection
+  end
   resources :corporaciones
   resources :lentes
   resources :marcas
