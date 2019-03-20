@@ -1,12 +1,9 @@
-class LentesController < ApplicationController
-  before_action :set_lente, only: [:show, :edit, :update, :destroy]
+class LentesController < ProductosController
+  before_action :set_lente, only: [:edit, :update, :destroy]
 
   def index
     @lentes = Lente.recientes_primero.con_marca
       .buscar(params[:q]).page(params[:page])
-  end
-
-  def show
   end
 
   def new

@@ -1,0 +1,61 @@
+.block.block-themed
+  .block-header.bg-primary-dark
+    %h3.block-title
+      %i.si.si-eye
+      detalles del producto #{@producto}
+    .block-options
+      .block-options-item
+        registrado por #{@producto.usuario}
+  .block-content
+    %table.table.table-hover.table-sm.table-vcenter
+      %tr
+        %th código:
+        %td= @producto.codigo
+        %th nombre:
+        %td= @producto.nombre
+      %tr
+        %th existencia:
+        %td= @producto.existencia
+        %th estado:
+        %td= estado_de_publicacion @producto
+      %tr
+        %th precio de venta:
+        %td= number_to_currency @producto.precio_venta
+        - if usuario_es?(:admin, :optica)
+          %th precio de compra:
+          %td= number_to_currency @producto.precio_compra
+        - else
+          %th
+          %td
+      %tr
+        %th tipo de producto:
+        %td= @producto.tipo
+        %th marca:
+        %td= @producto.marca
+      %tr
+        %th registrado el:
+        %td= l @producto.created_at, format: :long
+        %th actualizado el:
+        %td= l @producto.updated_at, format: :long
+      %tr
+        %th descripción:
+        %td= @producto.descripcion
+        %th
+        %td
+
+    - @producto.imagenes.each do |imagen|
+      %tr
+        %td= image_tag imagen.chica.url
+
+  .block-content.block-content-full.block-content-sm.bg-body-light
+    = link_to [@producto.class.to_s.downcase.pluralize], class: 'btn btn-alt-secondary' do
+      %i.si.si-arrow-left
+      regresar
+    .btn-group.pull-right
+      = link_to [@producto, format: :pdf], class: 'btn btn-alt-danger', target: '_blank' do
+        %i.fa.fa-file-pdf-o
+        pdf
+      = link_to [:edit, @producto], class: 'btn btn-alt-warning' do
+        %i.si.si-pencil
+        editar
+

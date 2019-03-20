@@ -20,12 +20,12 @@
           %td= estado_de_publicacion producto
           %td
             .btn-group
+              = link_to [producto, format: :pdf], class: 'btn btn-alt-danger', target: '_blank' do
+                %i.fa.fa-file-pdf-o
               = link_to producto, class: 'btn btn-alt-info' do
                 %i.si.si-eye
-                detalles
               = link_to [:edit, producto], class: 'btn btn-alt-warning' do
                 %i.si.si-pencil
-                editar
     %tfoot
       %tr
         %td{ colspan: 7 }

@@ -1,12 +1,9 @@
-class ArmazonesController < ApplicationController
-  before_action :set_armazon, only: [:show, :edit, :update, :destroy]
+class ArmazonesController < ProductosController
+  before_action :set_armazon, only: [:edit, :update, :destroy]
 
   def index
     @armazones = Armazon.recientes_primero.con_marca
       .buscar(params[:q]).page(params[:page])
-  end
-
-  def show
   end
 
   def new

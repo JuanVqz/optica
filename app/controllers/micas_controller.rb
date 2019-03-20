@@ -1,12 +1,9 @@
-class MicasController < ApplicationController
-  before_action :set_mica, only: [:show, :edit, :update, :destroy]
+class MicasController < ProductosController
+  before_action :set_mica, only: [:edit, :update, :destroy]
 
   def index
     @micas = Mica.recientes_primero.con_marca
       .buscar(params[:q]).page(params[:page])
-  end
-
-  def show
   end
 
   def new
