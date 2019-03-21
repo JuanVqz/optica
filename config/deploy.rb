@@ -1,6 +1,7 @@
 # config valid for current version and patch releases of Capistrano
 lock "~> 3.11.0"
 
+set :rbenv_ruby, File.read('.ruby-version').strip
 set :application, ENV['OPTICA_APLICACION'] || 'optica'
 set :repo_url, ENV['OPTICA_REPOSITORIO']
 set :deploy_to, ENV['OPTICA_RUTA']
