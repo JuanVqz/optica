@@ -6,9 +6,18 @@ set :application, ENV['OPTICA_APLICACION'] || 'optica'
 set :repo_url, ENV['OPTICA_REPOSITORIO']
 set :deploy_to, ENV['OPTICA_RUTA']
 
+set :unicorn_pid, "#{shared_path}/tmp/pids/unicorn.pid"
+
 set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/master.key', 'config/credentials.yml.enc')
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
 
+after 'deploy:publishing', 'deploy:restart'
+
+namespace :deploy do
+  task :restart do
+    invoke 'unicorn:reload'
+  end
+end
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
