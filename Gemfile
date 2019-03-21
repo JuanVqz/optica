@@ -20,6 +20,8 @@ gem 'pundit'
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary', '0.12.3'
 
+gem 'unicorn'
+
 # gem 'redis', '~> 4.0'
 # gem 'bcrypt', '~> 3.1.7'
 # gem 'capistrano-rails', group: :development
