@@ -1,4 +1,3 @@
-aplicacion = ENV['OPTICA_APLICACION'] || 'optica'
 root = Rails.root.join('current').to_s
 working_directory root
 
@@ -11,7 +10,7 @@ worker_processes 2
 timeout 180
 preload_app true
 
-listen "/tmp/unicorn.#{aplicacion}.sock", backlog: 64
+listen "/tmp/unicorn.optica.sock", backlog: 64
 
 # Force the bundler gemfile environment variable to
 # reference the capistrano "current" symlink
