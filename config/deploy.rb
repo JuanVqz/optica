@@ -7,7 +7,7 @@ set :repo_url, ENV['OPTICA_REPOSITORIO']
 set :deploy_to, ENV['OPTICA_RUTA']
 
 set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/master.key', 'config/credentials.yml.enc')
-set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
+set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/packs', 'public/uploads')
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
