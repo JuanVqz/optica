@@ -1,5 +1,5 @@
-set :stage, 'production'
-set :rails_env, 'production'
+set :stage, :production
+set :rails_env, :production
 set :branch, ENV['REVISION'] || ENV['BRANCH_NAME'] || 'master'
 
 server ENV['OPTICA_HOST'], user: ENV['OPTICA_USUARIO'], roles: %w{app db web}, primary: true
