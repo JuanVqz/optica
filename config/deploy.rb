@@ -7,9 +7,9 @@ set :repo_url, ENV['OPTICA_REPOSITORIO']
 set :deploy_to, ENV['OPTICA_RUTA']
 
 set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/master.key', 'config/credentials.yml.enc')
-set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/packs', 'public/uploads')
+set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
 
-set :default_env, { path: "/home/deployer/.yarn/bin:$PATH" }
+set :default_env, { path: ENV['OPTICA_PATH_ENV'] }
 
 after 'deploy:publishing', 'deploy:restart'
 
