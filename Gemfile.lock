@@ -315,6 +315,7 @@ DEPENDENCIES
   bullet
   byebug
   capistrano
+  capistrano-bundler
   capistrano-rails
   capistrano-rails-console
   capistrano-rake
