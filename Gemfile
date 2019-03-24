@@ -9,7 +9,7 @@ gem 'puma', '~> 3.11'
 gem 'webpacker'
 gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
-gem 'devise'
+gem 'devise', '>= 4.6.0'
 gem 'barby'
 gem 'haml-rails', '~> 1.0'
 gem 'simple_form'
