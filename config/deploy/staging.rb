@@ -1,13 +1,3 @@
-set :stage, 'staging'
-set :rails_env, ENV['OPTICA_RAILS_ENV']
-set :branch, ENV['REVISION'] || ENV['BRANCH_NAME'] || 'master'
-
-server ENV['OPTICA_HOST'], user: ENV['OPTICA_USUARIO'], roles: %w{app db web}, primary: true
-
-set :ssh_options, {
-  forward_agent: true,
-}
-
 # server-based syntax
 # ======================
 # Defines a single server with a list of roles and multiple properties.
