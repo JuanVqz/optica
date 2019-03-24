@@ -8,13 +8,15 @@
               Fecha entrega <span class="text-danger">*</span>
             </label>
             <input type="date" v-model="venta.fecha_entrega" id="fecha_entrega"
-              class="form-control" :class="errores.fecha_entrega ? 'is-invalid' : ''" autocomplete="off"/>
-            <div class="invalid-feedback" v-if="errores.fecha_entrega">{{ errores.fecha_entrega[0] }}</div>
+              class="form-control" :class="validar('fecha_entrega')"/>
+            <div class="invalid-feedback" v-if="errores.fecha_entrega">
+              {{ errores.fecha_entrega[0] }}
+            </div>
           </div>
         </div>
 
         <div class="col-md-4">
-          <div class="form-group" :class="errores.forma_de_pago ? 'is-invalid' : ''">
+          <div class="form-group" :class="validar('forma_de_pago')">
             <label for="forma_de_pago" class="form-control-label">
               Forma de pago <span class="text-danger">*</span>
             </label>
@@ -29,12 +31,14 @@
         </div>
 
         <div class="col-md-5">
-          <div class="form-group" :class="errores.cliente ? 'is-invalid' : ''">
+          <div class="form-group" :class="validar('cliente')">
             <label for="buscar-clientes" class="form-control-label">
               Seleccionar cliente <span class="text-danger">*</span>
             </label>
             <select id="buscar-clientes" class="form-control"></select>
-            <div class="invalid-feedback" v-if="errores.cliente">{{ errores.cliente[0] }}</div>
+            <div class="invalid-feedback" v-if="errores.cliente">
+              {{ errores.cliente[0] }}
+            </div>
           </div>
         </div>
 
@@ -53,8 +57,10 @@
             </label>
             <input type="text" :value="total | dinero"
               id="total" class="form-control"
-              :class="errores.total ? 'is-invalid' : ''" readonly/>
-            <div class="invalid-feedback" v-if="errores.total">{{ errores.total[0] }}</div>
+              :class="validar('total')" readonly/>
+            <div class="invalid-feedback" v-if="errores.total">
+              {{ errores.total[0] }}
+            </div>
           </div>
         </div>
 
@@ -65,8 +71,8 @@
             </label>
             <input type="number" v-model="venta.pagos_attributes[0].efectivo"
               @change.prevent="calcularCambio" @keyup="calcularCambio"
-              :class="errores['pagos.efectivo'] ? 'is-invalid' : ''"
-              id="efectivo" class="form-control" required="required" />
+              :class="validar(['pagos.efectivo'])" id="efectivo"
+              class="form-control" required/>
             <div class="invalid-feedback" v-if="errores['pagos.efectivo']">
               {{ errores['pagos.efectivo'][0] }}
             </div>
@@ -80,8 +86,8 @@
             </label>
             <input type="number" v-model="venta.pagos_attributes[0].anticipo"
               @change.prevent="calcularCambio" @keyup="calcularCambio"
-              :class="errores['pagos.anticipo'] ? 'is-invalid' : ''"
-              id="anticipo" class="form-control" required="required" />
+              :class="validar(['pagos.anticipo'])" id="anticipo"
+              class="form-control" required />
               <div class="invalid-feedback" v-if="errores['pagos.anticipo']">
                 {{ errores['pagos.anticipo'][0] }}
               </div>
@@ -95,8 +101,8 @@
             </label>
             <input type="number" v-model="venta.pagos_attributes[0].cambio"
               @change.prevent="calcularCambio" @keyup="calcularCambio"
-              :class="errores['pagos.cambio'] ? 'is-invalid' : ''"
-              id="cambio" class="form-control" min="0" readonly/>
+              :class="validar(['pagos.cambio'])" id="cambio"
+              class="form-control" min="0" readonly/>
               <div class="invalid-feedback" v-if="errores['pagos.cambio']">
                 {{ errores['pagos.cambio'][0] }}
               </div>
@@ -136,7 +142,7 @@
                         @change.prevent="calcularSubtotal"
                         @keyup="calcularSubtotal"
                         class="form-control"
-                        :class="errores['vendidos.cantidad'] ? 'is-invalid' : ''"/>
+                        :class="validar(['vendidos.cantidad'])"/>
                       <div class="invalid-feedback" v-if="errores['vendidos.cantidad']">
                         {{ errores['vendidos.cantidad'][0] }}
                       </div>
@@ -145,7 +151,7 @@
                       <input type="number" v-model="vendido.precio_venta"
                         @keyup="calcularSubtotal"
                         class="form-control"
-                        :class="errores['vendidos.precio_venta'] ? 'is-invalid' : ''"/>
+                        :class="validar(['vendidos.precio_venta'])"/>
                       <div class="invalid-feedback" v-if="errores['vendidos.precio_venta']">
                         {{ errores['vendidos.precio_venta'][0] }}
                       </div>
@@ -159,7 +165,7 @@
                     <td class="text-right">
                       <input type="text" :value="vendido.subtotal | dinero"
                         id="subtotal" class="form-control"
-                        :class="errores['vendidos.subtotal'] ? 'is-invalid' : ''"
+                        :class="validar(['vendidos.subtotal'])"
                         readonly/>
                       <div class="invalid-feedback" v-if="errores['vendidos.subtotal']">
                         {{ errores['vendidos.subtotal'][0] }}
@@ -219,14 +225,14 @@
                       nombre <span class="text-danger">*</span>
                     </label>
                     <input type="text" v-model="cliente.nombre" id="cliente_nombre"
-                      :class="errores.nombre ? 'is-invalid' : ''"
+                      :class="validar('nombre')"
                       class="form-control"/>
                     <div class="invalid-feedback" v-if="errores.nombre">{{ errores.nombre[0] }}</div>
                   </div>
                 </div>
 
                 <div class="col-md-6">
-                  <div class="form-group" :class="errores.corporacion_id ? 'is-invalid' : ''">
+                  <div class="form-group" :class="validar('corporacion_id')">
                     <label for="cliente_corporacion">
                       corporación <span class="text-danger">*</span>
                     </label>
@@ -542,6 +548,10 @@ export default {
           window.$('#buscar-clientes').html(opcion)
         })
         .catch(err => { this.errors = {}; this.errores = err.response.data })
+    },
+
+    validar(atributo) {
+      return this.errores[atributo] ? 'is-invalid' : ''
     }
 
   }
