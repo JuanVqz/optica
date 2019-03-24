@@ -5,8 +5,9 @@
       Tienda
     .block-options
       .block-options-item
-        = link_to [:new, :tienda], class: 'btn btn-alt-secondary' do
-          %i.fa.fa-plus
-          registrar tienda
+        - unless tienda_actual.present?
+          = link_to [:new, :tienda], class: 'btn btn-alt-secondary' do
+            %i.fa.fa-plus
+            registrar tienda
   .block-content
     = render 'empresas/table', empresas: @tiendas
