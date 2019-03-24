@@ -117,7 +117,7 @@
         </div>
       </div>
 
-      <div v-if="venta_tiene_productos">
+      <div v-if="ventaTieneProductos">
         <div class="row">
           <div class="col-md-12">
             <div class="table-responsive">
@@ -388,7 +388,7 @@ export default {
   },
 
   computed: {
-    venta_tiene_productos() {
+    ventaTieneProductos() {
       if (this.venta.vendidos_attributes.length) return true
       return false
     },
