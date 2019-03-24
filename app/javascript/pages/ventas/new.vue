@@ -119,8 +119,6 @@
                 <thead>
                   <tr>
                     <th>código</th>
-                    <th>nombre</th>
-                    <th>tipo</th>
                     <th>cantidad</th>
                     <th>precio</th>
                     <th>descuento</th>
@@ -130,19 +128,27 @@
                 </thead>
                 <tbody>
                   <tr v-for="(vendido, index) in venta.vendidos_attributes" :key="vendido.id">
-                    <td>{{ vendido.codigo }}</td>
-                    <td>{{ vendido.nombre }}</td>
-                    <td>{{ vendido.tipo }}</td>
+                    <td :title="`${vendido.nombre} | ${vendido.existencia} | ${vendido.tipo}`">
+                      {{ vendido.codigo }}
+                    </td>
                     <td>
                       <input type="number" v-model="vendido.cantidad"
                         @change.prevent="calcularSubtotal"
                         @keyup="calcularSubtotal"
-                        class="form-control"/>
+                        class="form-control"
+                        :class="errores['vendidos.cantidad'] ? 'is-invalid' : ''"/>
+                      <div class="invalid-feedback" v-if="errores['vendidos.cantidad']">
+                        {{ errores['vendidos.cantidad'][0] }}
+                      </div>
                     </td>
                     <td class="text-right">
                       <input type="number" v-model="vendido.precio_venta"
                         @keyup="calcularSubtotal"
-                        class="form-control"/>
+                        class="form-control"
+                        :class="errores['vendidos.precio_venta'] ? 'is-invalid' : ''"/>
+                      <div class="invalid-feedback" v-if="errores['vendidos.precio_venta']">
+                        {{ errores['vendidos.precio_venta'][0] }}
+                      </div>
                     </td>
                     <td>
                       <input type="number" v-model="vendido.descuento"
@@ -150,7 +156,15 @@
                         @keyup="calcularSubtotal"
                         class="form-control"/>
                     </td>
-                    <td class="text-right">{{ vendido.subtotal | dinero }}</td>
+                    <td class="text-right">
+                      <input type="text" :value="vendido.subtotal | dinero"
+                        id="subtotal" class="form-control"
+                        :class="errores['vendidos.subtotal'] ? 'is-invalid' : ''"
+                        readonly/>
+                      <div class="invalid-feedback" v-if="errores['vendidos.subtotal']">
+                        {{ errores['vendidos.subtotal'][0] }}
+                      </div>
+                    </td>
                     <td class="text-center">
                       <div class="btn-group">
                         <button type="button" @click.prevent="eliminarProducto(index)"
