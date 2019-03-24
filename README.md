@@ -43,3 +43,28 @@ rails db:test:load
 rails db:test:prepare
 rake
 ```
+
+## Desplegar
+
+### En el servidor
+> crea el archivo **manifest.json**
+```sh
+touch /var/www/optica/shared/public/assets/manifest.json
+```
+> crea el archivo **.rbenv-vars**, la `SECRET_KEY_BASE` la puedes generar con `rails secret`
+```sh
+DATABASE_URL=postgresql://usuario:contraseña@ip/base_de_datos
+RAILS_MASTER_KEY=llave_maestra_aqui
+SECRET_KEY_BASE=llave_secreta_aqui
+```
+
+### En local
+> ejecuta capistrano
+```sh
+cap production deploy:check
+cap production deploy
+```
+> reinicia el servidor web
+```sh
+cap production deploy:restart
+```
