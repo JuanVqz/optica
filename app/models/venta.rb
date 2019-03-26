@@ -40,6 +40,10 @@ class Venta < ApplicationRecord
     pagos.map(&:anticipo).sum
   end
 
+  def centavos
+    '%02d' % ((total * 100).to_i % 100)
+  end
+
   def to_s
     codigo
   end
