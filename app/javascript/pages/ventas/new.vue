@@ -72,7 +72,7 @@
             <input type="number" v-model="venta.pagos_attributes[0].efectivo"
               @change.prevent="calcularCambio" @keyup="calcularCambio"
               :class="validar(['pagos.efectivo'])" id="efectivo"
-              class="form-control" required/>
+              class="form-control" step="any" required/>
             <div class="invalid-feedback">
               {{ mensajeDeError(['pagos.efectivo']) }}
             </div>
@@ -87,7 +87,7 @@
             <input type="number" v-model="venta.pagos_attributes[0].anticipo"
               @change.prevent="calcularCambio" @keyup="calcularCambio"
               :class="validar(['pagos.anticipo'])" id="anticipo"
-              class="form-control" required />
+              class="form-control" step="any" required />
               <div class="invalid-feedback">
                 {{ mensajeDeError(['pagos.anticipo']) }}
               </div>
@@ -150,7 +150,7 @@
                     <td class="text-right">
                       <input type="number" v-model="vendido.precio_venta"
                         @keyup="calcularSubtotal"
-                        class="form-control"
+                        class="form-control" step="any"
                         :class="validar(['vendidos.precio_venta'])"/>
                       <div class="invalid-feedback">
                         {{ mensajeDeError(['vendidos.precio_venta']) }}
@@ -160,13 +160,13 @@
                       <input type="number" v-model="vendido.descuento"
                         @change.prevent="calcularSubtotal"
                         @keyup="calcularSubtotal"
-                        class="form-control"/>
+                        class="form-control" step="any"/>
                     </td>
                     <td class="text-right">
                       <input type="text" :value="vendido.subtotal | dinero"
                         id="subtotal" class="form-control"
                         :class="validar(['vendidos.subtotal'])"
-                        readonly/>
+                        step="any" readonly/>
                       <div class="invalid-feedback">
                         {{ mensajeDeError(['vendidos.subtotal']) }}
                       </div>
