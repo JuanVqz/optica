@@ -1,6 +1,27 @@
 require 'rails_helper'
 
 RSpec.describe VentasHelper, type: :helper do
+
+  describe "#total_en_letras" do
+    context "cuando el número es entero" do
+      let(:venta) { create :venta, total: 150 }
+
+      it "debe regresar 'ciento cincuenta pesos con cero centavos'" do
+        letras = "ciento cincuenta pesos con cero centavos"
+        expect(total_en_letras(venta)).to eq letras
+      end
+    end # context cuando el número es entero
+
+    context "cuando el número tiene centavos" do
+      let(:venta) { create :venta, total: 150.33 }
+
+      it "debe regresar 'ciento cincuenta pesos con trainta y tres centavos'" do
+        letras = "ciento cincuenta pesos con treinta y tres centavos"
+        expect(total_en_letras(venta)).to eq letras
+      end
+    end # context cuando el número tiene centavos
+  end # describe "#total_en_letras"
+
   describe "#estado_de_pago" do
     context "cuando una venta es saldada" do
       let(:pago) { build_list :pago, 1, efectivo: 100, anticipo: 100 }
