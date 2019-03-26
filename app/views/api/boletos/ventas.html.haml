@@ -42,6 +42,9 @@
       %th deuda
       %th.texto-der= number_to_currency @venta.deuda
 
+.fila.texto-mayuscula
+  = total_en_letras @venta
+
 .fila
   .col50= codigo_de_barras(@venta)
   .col50
