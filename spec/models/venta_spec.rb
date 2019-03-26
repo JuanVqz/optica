@@ -128,6 +128,24 @@ RSpec.describe Venta, type: :model do
     end # context cuando no tiene pagos
   end # describe "#suma_anticipos"
 
+  describe "#centavos" do
+    context "cuando el total tiene centavos" do
+      let(:venta) { create :venta, total: 100.45 }
+
+      it "debe regresar '45'" do
+        expect(venta.centavos).to eq '45'
+      end
+    end # context cuando el total tiene centavos
+
+    context "cuando el total no tiene centavos" do
+      let(:venta) { create :venta, total: 100.00 }
+
+      it "debe regresar '00'" do
+        expect(venta.centavos).to eq '00'
+      end
+    end # context cuando el total no tiene centavos
+  end # describe "#centavos"
+
   describe "#to_s" do
     let(:venta) { create :venta }
 
