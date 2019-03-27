@@ -7,9 +7,12 @@ RSpec.describe VentasMailer, type: :mailer do
       create :administrador, nombre: "Kenia",
         email: "kenia@gmail.com", notificar: true
     end
-
     let(:venta) { create :venta, :con_dos_armazones }
     let(:mail) { described_class.nueva(venta).deliver }
+
+    before :each do
+      allow(mail).to receive(:from).and_return(["notificaciones@optica.com"])
+    end
 
     it "debe mostrar el asunto 'Kenia, se realizó una nueva venta'" do
       expect(mail.subject).to eq "Kenia, se realizó una nueva venta"
@@ -17,6 +20,10 @@ RSpec.describe VentasMailer, type: :mailer do
 
     it "el destinatario debe ser 'kenia@gmail.com'" do
       expect(mail.to).to eq(["kenia@gmail.com"])
+    end
+
+    it "el remitente debe ser 'notificaciones@optica.com'" do
+      expect(mail.from).to eq(["notificaciones@optica.com"])
     end
 
     it "el cuerpo debe tener el nombre del administrador" do
