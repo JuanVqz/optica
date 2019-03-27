@@ -5,6 +5,8 @@ RSpec.describe "tiendas/edit", type: :view do
     @tienda = assign(:tienda, Tienda.create!(
       nombre: "Nombre",
       rfc: "Rfc",
+      pagina_web: "optica.com",
+      leyenda_boleto: "este boleto no es un comprobante fiscal",
       eslogan: "Eslogan",
       logotipo: FactoryBotHelpers.subir_archivo(nombre: 'opticajj.jpg', formato: 'jpg')
     ))
@@ -18,6 +20,8 @@ RSpec.describe "tiendas/edit", type: :view do
       assert_select "input[name=?]", "tienda[rfc]"
       assert_select "input[name=?]", "tienda[eslogan]"
       assert_select "input[name=?]", "tienda[logotipo]"
+      assert_select "input[name=?]", "tienda[pagina_web]"
+      assert_select "input[name=?]", "tienda[leyenda_boleto]"
     end
   end
 end

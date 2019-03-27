@@ -22,6 +22,7 @@ es:
         telefono: "Teléfono"
         codigo: "Código"
         corporacion_id: "Corporación"
+        pagina_web: "Página web"
     # Examples
     # labels:
     #   defaults:

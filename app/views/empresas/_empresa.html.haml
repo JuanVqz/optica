@@ -28,6 +28,11 @@
     %th país:
     %td= empresa.pais
   %tr
+    - if empresa.instance_of? Tienda
+      %th página web:
+      %td= empresa.pagina_web
+      %th leyenda del ticket:
+      %td= empresa.leyenda_boleto
     %th logotipo:
     %td{ colspan: 5 }
       - if empresa.logotipo?

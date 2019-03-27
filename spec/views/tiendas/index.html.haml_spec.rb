@@ -6,12 +6,14 @@ RSpec.describe "tiendas/index", type: :view do
       Tienda.create!(
         nombre: "Nombre",
         rfc: "Rfc",
+        pagina_web: "optica.com",
         eslogan: "Eslogan",
         logotipo: FactoryBotHelpers.subir_archivo(nombre: 'opticajj.jpg', formato: 'jpg')
       ),
       Tienda.create!(
         nombre: "Nombre",
         rfc: "Rfc",
+        pagina_web: "optica.com",
         eslogan: "Eslogan",
         logotipo: FactoryBotHelpers.subir_archivo(nombre: 'opticajj.jpg', formato: 'jpg')
       )

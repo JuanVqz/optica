@@ -1,3 +1,3 @@
 class Tienda < Empresa
-  validates :logotipo, presence: true
+  validates :logotipo, :pagina_web, presence: true
 end

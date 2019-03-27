@@ -14,6 +14,12 @@
         = image_tag(empresa.logotipo_url, class: "img-thumbnail")
       = f.input :logotipo
       = f.hidden_field :logotipo_cache
+
+    - if empresa.instance_of? Tienda
+      .col-md-3
+        = f.input :pagina_web
+      .col-md-3
+        = f.input :leyenda_boleto
     .col-md-12
       %h4 registrar domicilio
       = render 'domicilios/domicilio_fields', f: f

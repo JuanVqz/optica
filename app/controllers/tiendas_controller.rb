@@ -50,7 +50,8 @@ class TiendasController < ApplicationController
 
   def tienda_params
     params.require(:tienda).permit(
-      :nombre, :telefono, :rfc, :eslogan, :logotipo, :logotipo_cache,
+      :nombre, :telefono, :rfc, :eslogan, :logotipo,
+      :logotipo_cache, :leyenda_boleto, :pagina_web,
       domicilio_attributes: [:id, :calle, :numero, :colonia, :codigo_postal,
                              :municipio, :estado, :pais]
     )

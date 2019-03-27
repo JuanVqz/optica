@@ -45,6 +45,8 @@ ActiveRecord::Schema.define(version: 2019_03_18_184952) do
     t.string "rfc"
     t.string "eslogan"
     t.string "logotipo"
+    t.string "pagina_web"
+    t.string "leyenda_boleto"
     t.string "type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

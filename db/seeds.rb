@@ -6,7 +6,7 @@ end
 # EMPRESAS
 Tienda.create! nombre: 'Optica J&J', telefono: '951 111 2233',
   eslogan: 'Viste tu vista con el mejor accesorio',
-  logotipo: asignar_imagen('opticajj.jpg'),
+  logotipo: asignar_imagen('opticajj.jpg'), pagina_web: 'http://optica.com',
   domicilio: Domicilio.new(calle: 'una calle', numero: '8', colonia: 'la colonia',
   codigo_postal: '68000', municipio: 'Oaxaca de Júarez')
 
