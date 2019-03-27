@@ -1,0 +1,23 @@
+%p.header Hola, #{@admin} se realizó una nueva venta.
+
+%p.paragraph
+  El vendedor
+  %strong #{@venta.usuario}
+  vendió
+  %strong #{number_to_currency @venta.total}
+  al cliente
+  %strong #{@venta.cliente}.
+
+%p.paragraph
+  Descuento
+  %strong #{number_to_currency @venta.descuento}
+%p.paragraph
+  Anticipo
+  %strong #{number_to_currency @venta.suma_anticipos}
+%p.paragraph
+  Adeudo
+  %strong #{number_to_currency @venta.deuda}
+
+%p.paragraph-center
+  = link_to 'Click para el detalle de venta', @venta, class: 'button button--success'
+
