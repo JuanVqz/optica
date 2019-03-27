@@ -21,26 +21,22 @@ RSpec.describe Producto, type: :model do
   describe ".buscar" do
     let!(:armazones) { create_list :armazon, 2, tipo: "sobrepuesto" }
     let!(:armazon) do
-      create :armazon, nombre: "uno", codigo: "uno", tipo: "completo",
-        existencia: 60
+      create :armazon, nombre: "uno", codigo: "uno", tipo: "completo"
     end
 
     let!(:lentes) { create_list :lente, 2, tipo: "polarizado" }
     let!(:lente) do
-      create :lente, nombre: "dos", codigo: "dos", tipo: "filtro uv",
-        existencia: 70
+      create :lente, nombre: "dos", codigo: "dos", tipo: "filtro uv"
     end
 
     let!(:micas) { create_list :mica, 2, tipo: "monofocal" }
     let!(:mica) do
-      create :mica, nombre: "tres", codigo: "tres", tipo: "cr",
-        existencia: 80
+      create :mica, nombre: "tres", codigo: "tres", tipo: "cr"
     end
 
     let!(:tratamientas) { create_list :tratamiento, 2 }
     let!(:tratamiento) do
-      create :tratamiento, nombre: "cuatro", codigo: "cuatro",
-        existencia: 90
+      create :tratamiento, nombre: "cuatro", codigo: "cuatro"
     end
 
     context "Armazon" do
@@ -58,10 +54,6 @@ RSpec.describe Producto, type: :model do
 
       it "regresa 1 por tipo" do
         expect(Armazon.buscar("completo").count).to eq 1
-      end
-
-      it "regresa 1 por existencia" do
-        expect(Armazon.buscar("60").count).to eq 1
       end
     end # context Armazon
 
@@ -81,10 +73,6 @@ RSpec.describe Producto, type: :model do
       it "regresa 1 por tipo" do
         expect(Lente.buscar("filtro uv").count).to eq 1
       end
-
-      it "regresa 1 por existencia" do
-        expect(Lente.buscar("70").count).to eq 1
-      end
     end # context Lente
 
     context "Mica" do
@@ -103,10 +91,6 @@ RSpec.describe Producto, type: :model do
       it "regresa 1 por tipo" do
         expect(Mica.buscar("cr").count).to eq 1
       end
-
-      it "regresa 1 por existencia" do
-        expect(Mica.buscar("80").count).to eq 1
-      end
     end # context Mica
 
     context "Tratamiento" do
@@ -120,10 +104,6 @@ RSpec.describe Producto, type: :model do
 
       it "regresa 1 por código" do
         expect(Tratamiento.buscar("cuatro").count).to eq 1
-      end
-
-      it "regresa 1 por existencia" do
-        expect(Tratamiento.buscar("90").count).to eq 1
       end
     end # context Tratamiento
   end # describe ".buscar"

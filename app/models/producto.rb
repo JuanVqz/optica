@@ -14,7 +14,7 @@ class Producto < ApplicationRecord
   scope :con_marca, -> { includes(:marca) }
 
   def self.buscar texto
-    where("concat_ws(' ', codigo, nombre, tipo, type, existencia) ILIKE ?", "%#{texto&.squish}%")
+    where("concat_ws(' ', codigo, nombre, tipo, type) ILIKE ?", "%#{texto&.squish}%")
   end
 
   def to_s
