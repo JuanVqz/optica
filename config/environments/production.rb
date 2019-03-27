@@ -84,4 +84,17 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  config.action_mailer.default_url_options = { host: ENV['OPTICA_SENDGRID_ADDRESS'] }
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    user_name: ENV['OPTICA_SENDGRID_USERNAME'],
+    password: ENV['OPTICA_SENDGRID_PASSWORD'],
+    address: ENV['OPTICA_SENDGRID_ADDRESS'],
+    domain: 'smtp.sendgrid.net',
+    port: ENV['OPTICA_SENDGRID_PORT'],
+    authentication: :plain,
+    enable_starttls_auto: true
+  }
 end
