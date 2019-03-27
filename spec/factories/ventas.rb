@@ -3,6 +3,7 @@ FactoryBot.define do
     codigo { nil }
     observaciones { "MyText" }
     saldada { true }
+    facturar { false }
     fecha_entrega { "2019-02-06 18:04:16" }
     descuento { 0 }
     total { 1 }

@@ -4,6 +4,7 @@ class CreateVentas < ActiveRecord::Migration[5.2]
       t.string :codigo
       t.text :observaciones
       t.boolean :saldada, default: true
+      t.boolean :facturar, default: false
       t.timestamp :fecha_entrega, default: -> { 'NOW()' }
       t.money :descuento, default: 0
       t.money :total, default: 0

@@ -128,6 +128,7 @@ ActiveRecord::Schema.define(version: 2019_03_18_184952) do
     t.string "codigo"
     t.text "observaciones"
     t.boolean "saldada", default: true
+    t.boolean "facturar", default: false
     t.datetime "fecha_entrega", default: -> { "now()" }
     t.money "descuento", scale: 2, default: "0.0"
     t.money "total", scale: 2, default: "0.0"
