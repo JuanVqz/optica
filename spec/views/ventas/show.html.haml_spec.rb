@@ -11,6 +11,7 @@ RSpec.describe "ventas/show", type: :view do
     @venta = assign(:venta, Venta.create!(
       observaciones: "MyText",
       saldada: true,
+      facturar: true,
       fecha_entrega: "2019-02-27 00:00:00",
       total: 100,
       forma_de_pago: '01 - Efectivo',
@@ -36,6 +37,7 @@ RSpec.describe "ventas/show", type: :view do
     expect(rendered).to match(/100/)
     expect(rendered).to match(/01 - Efectivo/)
     expect(rendered).to match(/MyText/)
+    expect(rendered).to match(/FACTURAR/)
   end
 
 end

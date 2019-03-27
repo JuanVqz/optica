@@ -28,10 +28,12 @@
         %th deuda:
         %td.text-danger= number_to_currency @venta.deuda
       %tr
+        %th facturación:
+        %td= facturacion @venta
         %th forma de pago:
-        %td{ colspan: 2 }= @venta.forma_de_pago
+        %td= @venta.forma_de_pago
         %th observaciones:
-        %td{ colspan: 4 }= @venta.observaciones
+        %td{ colspan: 3 }= @venta.observaciones
 
     %h4.title.text-center
       = pluralize(@venta.pagos.count, 'pago', 'pagos')

@@ -16,6 +16,7 @@
         %thead
           %tr
             %th estado
+            %th facturación
             %th fecha entrega
             %th total
             %th anticipo
@@ -26,6 +27,7 @@
           - @ventas.each do |venta|
             %tr
               %td= estado_de_pago venta
+              %td= facturacion venta
               %td= l venta.fecha_entrega, format: :fecha
               %td= number_to_currency venta.total
               %td= number_to_currency venta.suma_anticipos
