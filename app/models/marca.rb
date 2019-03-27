@@ -8,6 +8,10 @@ class Marca < ApplicationRecord
     where("concat_ws(' ', nombre, descripcion) ILIKE ?", "%#{texto&.squish}%")
   end
 
+  def existencia_de_productos
+    productos.map(&:existencia).sum
+  end
+
   def to_s
     nombre
   end
