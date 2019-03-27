@@ -10,6 +10,18 @@ class ApplicationController < ActionController::Base
     current_usuario
   end
 
+  protected
+
+  def configuracion_pdf(modelo)
+    {
+      pdf: nombre_pdf,
+      template: "pdfs/#{modelo.pluralize}/#{modelo}",
+      margin: { top: '30', bottom: '10' },
+      header: { html: { template: 'pdfs/cabeza' } },
+      footer: { html: { template: 'pdfs/pie' } }
+    }
+  end
+
   private
 
   def usuario_no_autorizado exception

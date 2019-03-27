@@ -3,19 +3,21 @@
 %table.table.table-striped.table-sm.table-vcenter
   %thead
     %tr
-      %th CÓDIGO Y NOMBRE
+      %th CÓDIGO
+      %th NOMBRE
       %th EXISTENCIA
       %th PRODUCTO
       %th TIPO
   %tbody
     - @marca.productos.each do |producto, index|
       %tr
-        %td= producto
+        %td= producto.codigo
+        %td= producto.nombre
         %td.text-center= producto.existencia
         %td= producto.type
         %td= producto.tipo
     %tr
-      %th TOTAL
+      %th{ colspan: 2 } TOTAL
       %td.text-center= @marca.existencia_de_productos
       %td{ colspan: 2 }
 

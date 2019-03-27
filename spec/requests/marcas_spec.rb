@@ -20,6 +20,7 @@ RSpec.describe "Marcas", type: :request do
   end
 
   describe "GET /marcas/:id" do
+    let!(:tienda) { create :tienda }
     let(:marca) { create :marca }
 
     it "debe regresar una respuesta exitosa" do

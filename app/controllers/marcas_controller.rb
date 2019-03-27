@@ -8,11 +8,7 @@ class MarcasController < ApplicationController
   def show
     respond_to do |format|
       format.html
-      format.pdf {
-        render pdf: 'marca',
-        template: 'pdfs/marcas/marca',
-        margin: { top: '30', bottom: '10' }
-      }
+      format.pdf { render configuracion_pdf('marca') }
     end
   end
 
@@ -47,6 +43,10 @@ class MarcasController < ApplicationController
   end
 
   private
+
+  def nombre_pdf
+    @marca.to_s.parameterize.underscore
+  end
 
   def set_marca
     @marca = Marca.find(params[:id])
