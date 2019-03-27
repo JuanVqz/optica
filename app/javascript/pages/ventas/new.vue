@@ -15,7 +15,7 @@
           </div>
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-2">
           <div class="form-group" :class="validar('forma_de_pago')">
             <label for="forma_de_pago" class="form-control-label">
               Forma de pago <span class="text-danger">*</span>
@@ -27,6 +27,18 @@
             <div class="invalid-feedback">
               {{ mensajeDeError('forma_de_pago') }}
             </div>
+          </div>
+        </div>
+
+        <div class="col-md-2">
+          <div class="form-group row">
+            <label class="col-12 text-center" for="facturar">¿desea facturar?</label>
+            <label class="css-control css-control-primary css-radio col-12 text-center">
+              <input type="checkbox" v-model="venta.facturar"
+                id="facturar" class="css-control-input"/>
+              <span class="css-control-indicator"></span>
+              {{ facturarVenta }}
+            </label>
           </div>
         </div>
 
@@ -334,6 +346,7 @@ export default {
       venta: {
         total: 0,
         descuento: 0,
+        facturar: false,
         cliente_id: null,
         pagos_attributes: [
           { efectivo: 0, anticipo: 0, cambio: 0 }
@@ -401,6 +414,10 @@ export default {
     descuento() {
       return this.venta.descuento = this.venta.vendidos_attributes
               .reduce((descuento, p) => descuento + parseFloat(p.descuento), 0)
+    },
+
+    facturarVenta() {
+      return this.venta.facturar ? 'SI' : 'NO'
     }
   },
 

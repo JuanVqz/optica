@@ -25,6 +25,7 @@ RSpec.describe VentasController, type: :controller do
     {
       observaciones: 'observaciones',
       saldada: true,
+      facturar: true,
       fecha_entrega: Time.now,
       descuento: 10,
       total: 290,
