@@ -1,0 +1,21 @@
+%h4.title.text-center PRODUCTOS DE LA MARCA #{@marca}
+
+%table.table.table-striped.table-sm.table-vcenter
+  %thead
+    %tr
+      %th CÓDIGO Y NOMBRE
+      %th EXISTENCIA
+      %th PRODUCTO
+      %th TIPO
+  %tbody
+    - @marca.productos.each do |producto, index|
+      %tr
+        %td= producto
+        %td.text-center= producto.existencia
+        %td= producto.type
+        %td= producto.tipo
+    %tr
+      %th TOTAL
+      %td.text-center= @marca.existencia_de_productos
+      %td{ colspan: 2 }
+

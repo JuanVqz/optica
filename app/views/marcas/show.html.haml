@@ -14,6 +14,9 @@
         %th descripción:
         %td= @marca.descripcion
       %tr
+        %th existencia de productos:
+        %td= @marca.existencia_de_productos
+      %tr
         %th creada el:
         %td= l @marca.created_at, format: :short
       %tr
@@ -24,6 +27,10 @@
     = link_to [:marcas], class: 'btn btn-alt-secondary' do
       %i.si.si-arrow-left
       regresar
-    = link_to [:edit, @marca], class: 'btn btn-alt-warning pull-right' do
-      %i.si.si-pencil
-      editar
+    .btn-group.pull-right
+      = link_to [@marca, format: :pdf], class: 'btn btn-alt-danger', target: '_blank' do
+        %i.fa.fa-file-pdf-o
+        pdf
+      = link_to [:edit, @marca], class: 'btn btn-alt-warning pull-right' do
+        %i.si.si-pencil
+        editar

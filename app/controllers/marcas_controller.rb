@@ -6,6 +6,14 @@ class MarcasController < ApplicationController
   end
 
   def show
+    respond_to do |format|
+      format.html
+      format.pdf {
+        render pdf: 'marca',
+        template: 'pdfs/marcas/marca',
+        margin: { top: '30', bottom: '10' }
+      }
+    end
   end
 
   def new

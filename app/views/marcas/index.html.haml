@@ -27,12 +27,12 @@
               %td= l marca.updated_at, format: :short
               %td
                 .btn-group
+                  = link_to [marca, format: :pdf], class: 'btn btn-alt-danger', target: '_blank' do
+                    %i.fa.fa-file-pdf-o
                   = link_to marca, class: 'btn btn-alt-info' do
                     %i.si.si-eye
-                    detalles
                   = link_to [:edit, marca], class: 'btn btn-alt-warning' do
                     %i.si.si-pencil
-                    editar
     %tfoot
       %tr
         %td{ colspan: 7 }

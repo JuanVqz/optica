@@ -26,6 +26,11 @@ RSpec.describe "Marcas", type: :request do
       get marca_path marca
       expect(response).to have_http_status 200
     end
+
+    it "debe regresar una respuesta en format pdf" do
+      get marca_path marca, params: { format: :pdf }
+      expect(response).to have_http_status 200
+    end
   end
 
   describe "GET /marcas/:id/edit" do
