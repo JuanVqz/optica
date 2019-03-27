@@ -16,12 +16,14 @@
         %thead
           %tr
             %th nombre
+            %th existencias
             %th actualizada el
             %th.text-center{:style => "width: 100px;"} Acciones
         %tbody
           - @marcas.each do |marca|
             %tr
               %td= marca
+              %td= marca.existencia_de_productos
               %td= l marca.updated_at, format: :short
               %td
                 .btn-group
