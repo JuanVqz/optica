@@ -49,6 +49,7 @@
           .col50= tienda_actual.rfc
           %pre= tienda_actual.domicilio
       = yield
+      .texto-min= tienda_actual.leyenda_boleto
       .texto-min impresión ticket #{l Time.current, format: :long }
       .linea
 
