@@ -58,27 +58,6 @@ RSpec.describe Venta, type: :model do
     end # context cuando no tiene productos vendidos
   end # describe "#suma_precios_venta"
 
-  describe "#suma_descuentos" do
-    context "cuando tiene productos vendidos" do
-      let(:venta) do
-        create :venta, :con_dos_armazones, :con_dos_micas, total: 800
-      end
-
-      it "debe ser 100" do
-        venta.reload
-        expect(venta.suma_descuentos).to eq 100
-      end
-    end # context cuando tiene productos vendidos
-
-    context "cuando no tiene productos vendidos" do
-      let(:venta) { create :venta }
-
-      it "debe ser 0" do
-        expect(venta.suma_descuentos).to eq 0
-      end
-    end # context cuando no tiene productos vendidos
-  end # describe "#suma_descuentos"
-
   describe "#deuda" do
     let(:pago) do
       build_list :pago, 1, efectivo: 500, anticipo: 200, cambio: 300

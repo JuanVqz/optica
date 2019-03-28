@@ -28,10 +28,6 @@ class Venta < ApplicationRecord
     vendidos.map { |v| v.precio_venta * v.cantidad }.sum
   end
 
-  def suma_descuentos
-    vendidos.map(&:descuento).sum
-  end
-
   def deuda
     total - suma_anticipos
   end
