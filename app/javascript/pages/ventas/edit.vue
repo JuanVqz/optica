@@ -131,21 +131,34 @@
             </div>
             <div class="block-content">
               <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="pago_venta_total">total</label>
+                    <input type="text" id="pago_venta_total"
+                      :value="this.venta.total | dinero"
+                      class="form-control form-control-lg"
+                      :class="validar('total')" disabled />
+                    <div class="invalid-feedback">
+                      {{ mensajeDeError(['total']) }}
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-4">
                   <div class="form-group">
                     <label>deuda</label>
                     <input type="text" v-if="venta.pagos_attributes"
                       :value="this.venta.deuda | dinero"
-                      class="form-control form-control-lg" disabled="disabled" />
+                      class="form-control form-control-lg" disabled />
                   </div>
                 </div>
 
-                <div class="col-md-6">
+                <div class="col-md-4">
                   <div class="form-group">
                     <label>resto</label>
                     <input type="text" v-if="venta.pagos_attributes"
                       :value="resto | dinero"
-                      class="form-control form-control-lg" disabled="disabled" />
+                      class="form-control form-control-lg" disabled />
                   </div>
                 </div>
 
@@ -157,10 +170,10 @@
                     <input type="number" v-if ="venta.pagos_attributes"
                       v-model="venta.pagos_attributes[0].efectivo"
                       @change.prevent="calcularCambio" @keyup="calcularCambio"
-                      :class="errores['pagos.efectivo'] ? 'is-invalid' : ''"
-                      id="pago_efectivo" class="form-control form-control-lg"/>
-                    <div class="invalid-feedback" v-if="errores['pagos.efectivo']">
-                      {{ errores['pagos.efectivo'][0] }}
+                      :class="validar(['pagos.efectivo'])" id="pago_efectivo"
+                      class="form-control form-control-lg"/>
+                    <div class="invalid-feedback">
+                      {{ mensajeDeError(['pagos.efectivo']) }}
                     </div>
                   </div>
                 </div>
@@ -173,10 +186,10 @@
                     <input type="number" v-if ="venta.pagos_attributes"
                       v-model="venta.pagos_attributes[0].anticipo"
                       @change.prevent="calcularCambio" @keyup="calcularCambio"
-                      :class="errores['pagos.anticipo'] ? 'is-invalid' : ''"
-                      id="pago_anticipo" class="form-control form-control-lg"/>
-                    <div class="invalid-feedback" v-if="errores['pagos.anticipo']">
-                      {{ errores['pagos.anticipo'][0] }}
+                      :class="validar(['pagos.anticipo'])" id="pago_anticipo"
+                      class="form-control form-control-lg"/>
+                    <div class="invalid-feedback">
+                      {{ mensajeDeError(['pagos.anticipo']) }}
                     </div>
                   </div>
                 </div>
@@ -189,11 +202,11 @@
                     <input type="number" v-if ="venta.pagos_attributes"
                       v-model="venta.pagos_attributes[0].cambio"
                       @change.prevent="calcularCambio" @keyup="calcularCambio"
-                      :class="errores['pagos.cambio'] ? 'is-invalid' : ''"
-                      id="pago_cambio" min="0" class="form-control form-control-lg"
-                      readonly="readonly"/>
-                    <div class="invalid-feedback" v-if="errores['pagos.cambio']">
-                      {{ errores['pagos.cambio'][0] }}
+                      :class="validar(['pagos.cambio'])" id="pago_cambio"
+                      min="0" class="form-control form-control-lg"
+                      readonly />
+                    <div class="invalid-feedback">
+                      {{ mensajeDeError(['pagos.cambio']) }}
                     </div>
                   </div>
                 </div>
@@ -314,6 +327,15 @@ export default {
 
     marcarParaEliminar(vendido) {
       return vendido._destroy ? 'table-danger' : ''
+    },
+
+    validar(atributo) {
+      return this.errores[atributo] ? 'is-invalid' : ''
+    },
+
+    mensajeDeError(atributo) {
+      if ( ! this.errores[atributo] ) return false
+      return this.errores[atributo][0]
     }
   }
 }
