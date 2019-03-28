@@ -60,7 +60,7 @@ class VentasController < ApplicationController
       pagos_attributes: [:efectivo, :anticipo, :cambio],
       vendidos_attributes: [
         :id, :producto_id, :cantidad, :precio_venta, :precio_compra,
-        :descuento, :subtotal
+        :descuento, :subtotal, :_destroy
       ]
     )
   end

@@ -11,7 +11,7 @@ class Venta < ApplicationRecord
   has_many :productos, through: :vendidos
   has_many :pagos, dependent: :destroy
 
-  accepts_nested_attributes_for :vendidos
+  accepts_nested_attributes_for :vendidos, allow_destroy: true
   accepts_nested_attributes_for :pagos
 
   validates :cliente, :fecha_entrega, :forma_de_pago, presence: true

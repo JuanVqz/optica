@@ -90,7 +90,8 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(vendido, index) in venta.vendidos_attributes" :key="vendido.id">
+          <tr v-for="(vendido, index) in venta.vendidos_attributes" :key="vendido.id"
+              :class="marcarParaEliminar(vendido)">
             <td>{{ vendido.codigo }}</td>
             <td>{{ vendido.nombre }}</td>
             <td>{{ vendido.cantidad }}</td>
@@ -267,10 +268,12 @@ export default {
 
     calcularTotal() {
       this.venta.descuento = this.venta.vendidos_attributes
-              .reduce((descuento, p) => descuento + parseFloat(p.descuento), 0)
+        .filter(({_destroy}) => _destroy == false)
+        .reduce((descuento, p) => descuento + parseFloat(p.descuento), 0)
 
       this.venta.total = this.venta.vendidos_attributes
-              .reduce((total, p) => total + parseFloat(p.subtotal), 0)
+        .filter(({_destroy}) => _destroy == false)
+        .reduce((total, p) => total + parseFloat(p.subtotal), 0)
 
       this.venta.deuda = this.venta.total - this.venta.anticipo
     },
@@ -292,10 +295,9 @@ export default {
     },
 
     eliminarProducto(index) {
-      if (this.venta.vendidos_attributes.length > 1) {
-        this.venta.vendidos_attributes.splice(index, 1)
-        this.calcularTotal()
-      }
+      let v = this.venta.vendidos_attributes[index]
+      v._destroy = ! v._destroy
+      this.calcularTotal()
     },
 
     obtenerVenta() {
@@ -308,6 +310,10 @@ export default {
           this.cargando = false
         })
         .catch(err => console.log(err))
+    },
+
+    marcarParaEliminar(vendido) {
+      return vendido._destroy ? 'table-danger' : ''
     }
   }
 }
