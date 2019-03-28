@@ -92,7 +92,7 @@ Rails.application.configure do
     user_name: ENV['OPTICA_SENDGRID_USERNAME'],
     password: ENV['OPTICA_SENDGRID_PASSWORD'],
     address: ENV['OPTICA_SENDGRID_ADDRESS'],
-    domain: 'smtp.sendgrid.net',
+    domain: ENV['OPTICA_SENDGRID_DOMAIN'],
     port: ENV['OPTICA_SENDGRID_PORT'],
     authentication: :plain,
     enable_starttls_auto: true
