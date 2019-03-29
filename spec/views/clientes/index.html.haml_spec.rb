@@ -32,10 +32,8 @@ RSpec.describe "clientes/index", type: :view do
     it "debe mostrar el boton editar" do
       render
 
-      expect(rendered).to match(/editar/)
-
+      expect(rendered).to match(/si-pencil/)
       assert_select "tr>td", :text => "Nombre".to_s, :count => 1
-      assert_select "tr>td", :text => "Rfc".to_s, :count => 2
       assert_select "tr>td", :text => "Telefono".to_s, :count => 2
       assert_select "tr>td", :text => corporacion.nombre, :count => 2
     end
@@ -47,11 +45,10 @@ RSpec.describe "clientes/index", type: :view do
     it "no debe mostrar el boton editar" do
       render
 
-      expect(rendered).not_to match(/editar/)
-
+      expect(rendered).not_to match(/si-pencil/)
       assert_select "tr>td", :text => "Nombre".to_s, :count => 1
-      assert_select "tr>td", :text => "Rfc".to_s, :count => 2
       assert_select "tr>td", :text => "Telefono".to_s, :count => 2
+      assert_select "tr>td", :text => corporacion.nombre, :count => 2
     end
   end # context cuando es vendedor
 end

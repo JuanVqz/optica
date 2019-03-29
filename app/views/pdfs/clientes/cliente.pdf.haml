@@ -1,0 +1,22 @@
+%h4.title.mayusculas.text-center COMPRAS DEL CLIENTE #{@cliente}
+
+%table.table.table-striped.table-sm.table-vcenter
+  %thead
+    %tr
+      %th ESTADO
+      %th FACTURACIÓN
+      %th F. DE COMPRA
+      %th TOTAL
+      %th DESCUENTO
+      %th ANTICIPO
+      %th DEUDA
+  %tbody
+    - @cliente.ventas.each do |venta|
+      %tr
+        %td= estado_de_pago venta
+        %td= facturacion venta
+        %td= l venta.created_at, format: :fecha
+        %td.text-right= number_to_currency venta.total
+        %td.text-right= number_to_currency venta.descuento
+        %td.text-right= number_to_currency venta.suma_anticipos
+        %td.text-right= number_to_currency venta.deuda

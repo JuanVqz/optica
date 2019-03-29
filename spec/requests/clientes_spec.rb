@@ -25,6 +25,15 @@ RSpec.describe "Clientes", type: :request do
       get cliente_path cliente, params: { format: :json }
       expect(response).to have_http_status 200
     end
+
+    context "formato pdf" do
+      let!(:tienda) { create :tienda }
+
+      it "debe regresar una respuesta exitosa" do
+        get cliente_path cliente, params: { format: :pdf }
+        expect(response).to have_http_status 200
+      end
+    end # context formato pdf
   end # describe "GET /clientes/:id"
 
   describe "GET /clientes/new" do

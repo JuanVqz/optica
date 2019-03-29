@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
     {
       pdf: nombre_pdf,
       template: "pdfs/#{modelo.pluralize}/#{modelo}",
-      margin: { top: '30', bottom: '10' },
+      margin: { top: '50', bottom: '10' },
       header: { html: { template: 'pdfs/cabeza' } },
       footer: { html: { template: 'pdfs/pie' } }
     }

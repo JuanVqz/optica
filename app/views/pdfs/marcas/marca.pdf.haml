@@ -1,4 +1,4 @@
-%h4.title.text-center PRODUCTOS DE LA MARCA #{@marca}
+%h4.title.mayusculas.text-center PRODUCTOS DE LA MARCA #{@marca}
 
 %table.table.table-striped.table-sm.table-vcenter
   %thead
@@ -9,7 +9,7 @@
       %th PRODUCTO
       %th TIPO
   %tbody
-    - @marca.productos.each do |producto, index|
+    - @marca.productos.each do |producto|
       %tr
         %td= producto.codigo
         %td= producto.nombre

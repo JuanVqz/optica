@@ -8,6 +8,11 @@ class ClientesController < ApplicationController
   end
 
   def show
+    respond_to do |format|
+      format.html
+      format.json
+      format.pdf { render configuracion_pdf('cliente') }
+    end
   end
 
   def new
@@ -42,6 +47,10 @@ class ClientesController < ApplicationController
   end
 
   private
+
+  def nombre_pdf
+    @cliente.to_s.parameterize.underscore
+  end
 
   def set_cliente
     @cliente = Cliente.find(params[:id])

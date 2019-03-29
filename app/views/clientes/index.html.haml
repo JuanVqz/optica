@@ -16,7 +16,7 @@
         %thead
           %tr
             %th nombre
-            %th rfc
+            %th compras realizadas
             %th telefono
             %th corporación
             %th.text-center{:style => "width: 100px;"} Acciones
@@ -24,18 +24,19 @@
           - @clientes.each do |cliente|
             %tr
               %td= cliente.nombre
-              %td= cliente.rfc
+              %td= cliente.ventas.count
               %td= cliente.telefono
               %td= cliente.corporacion
               %td
                 .btn-group
+                  = link_to [cliente, format: :pdf], class: 'btn btn-alt-danger', target: '_blank' do
+                    %i.fa.fa-file-pdf-o
                   = link_to cliente, class: 'btn btn-alt-info' do
                     %i.si.si-eye
-                    detalles
                   - if puede?(:edit, :cliente)
                     = link_to [:edit, cliente], class: 'btn btn-alt-warning' do
                       %i.si.si-pencil
-                      editar
+
     %tfoot
       %tr
         %td{ colspan: 6 }
