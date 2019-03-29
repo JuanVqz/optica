@@ -3,7 +3,10 @@ require "rails_helper"
 RSpec.describe VentasMailer, type: :mailer do
 
   context "#nueva" do
-    let!(:admin) do
+    let(:tienda) do
+      create :tienda, nombre: "Optica", pagina_web: "http://optica.com"
+    end
+    let(:admin) do
       create :administrador, nombre: "Kenia",
         email: "kenia@gmail.com", notificar: true
     end
@@ -11,7 +14,17 @@ RSpec.describe VentasMailer, type: :mailer do
     let(:mail) { described_class.nueva(venta).deliver }
 
     before :each do
+      admin
+      allow_any_instance_of(TiendasHelper).to receive(:tienda_actual).and_return(tienda)
       allow(mail).to receive(:from).and_return(["notificaciones@optica.com"])
+    end
+
+    it "debe mostrar el nombre de la tienda" do
+      expect(mail.body.encoded).to match(tienda.nombre)
+    end
+
+    it "debe tener un enlace a la tienda" do
+      expect(mail.body.encoded).to match(tienda.pagina_web)
     end
 
     it "debe mostrar el asunto 'Kenia, se realizó una nueva venta'" do
