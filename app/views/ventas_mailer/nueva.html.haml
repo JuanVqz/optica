@@ -18,6 +18,10 @@
   Adeudo
   %strong #{number_to_currency @venta.deuda}
 
+%p.paragraph
+  Forma de pago
+  %strong #{@venta.forma_de_pago}
+
 %p.paragraph-center
   = link_to 'Click para el detalle de venta', @venta, class: 'button button--success'
 
