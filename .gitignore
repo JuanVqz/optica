@@ -35,3 +35,4 @@ yarn-debug.log*
 /public/uploads
 /spec/examples.txt
 .env
+dump.rdb
