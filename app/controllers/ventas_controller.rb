@@ -20,7 +20,7 @@ class VentasController < ApplicationController
 
     respond_to do |format|
       if @venta.save
-        VentasMailer.nueva(@venta).deliver
+        NotificarVentaNuevaWorker.perform_async(@venta.id)
         format.html { redirect_to @venta, notice: 'La venta fue creada correctamente' }
         format.json { render :show, status: :created, location: @venta }
       else
