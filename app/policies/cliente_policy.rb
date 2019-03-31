@@ -23,11 +23,11 @@ class ClientePolicy < ApplicationPolicy
   end
 
   def create?
-    usuario.admin? or usuario.vendedor?
+    true
   end
 
   def update?
-    usuario.admin?
+    true unless usuario.vendedor?
   end
 
 end

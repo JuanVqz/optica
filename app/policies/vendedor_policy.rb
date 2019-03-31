@@ -23,7 +23,7 @@ class VendedorPolicy < ApplicationPolicy
   end
 
   def create?
-    usuario.admin?
+    true unless usuario.vendedor?
   end
 
   def update?

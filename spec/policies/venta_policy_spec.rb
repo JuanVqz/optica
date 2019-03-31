@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe VentaPolicy, type: :policy do
+
+  let(:superusuario) { create :super_usuario }
   let(:admin) { create :administrador }
   let(:vendedor) { create :vendedor }
 
@@ -17,6 +19,10 @@ RSpec.describe VentaPolicy, type: :policy do
       it "no debe acceder cuando es vendedor" do
         expect(subject).to permit(vendedor, registro)
       end
+
+      it "no debe acceder cuando es superusuario" do
+        expect(subject).to permit(superusuario, registro)
+      end
     end # context cuando la venta es saldada
 
     context "cuando la venta no es saldada" do
@@ -28,6 +34,10 @@ RSpec.describe VentaPolicy, type: :policy do
 
       it "debe accerder cuando es vendedor" do
         expect(subject).to permit(vendedor, registro)
+      end
+
+      it "debe accerder cuando es superusuario" do
+        expect(subject).to permit(superusuario, registro)
       end
     end # context cuando la venta no es saldada
   end
