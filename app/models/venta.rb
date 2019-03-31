@@ -59,7 +59,7 @@ class Venta < ApplicationRecord
   end
 
   def descontar_existencia_de_producto!
-    ExistenciaDeProductoServicio.new(self).descontar if saldada?
+    DescontarProductosVendidosWorker.perform_async(id) if saldada?
   end
 
 end
