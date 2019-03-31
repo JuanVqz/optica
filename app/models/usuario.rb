@@ -1,5 +1,5 @@
 class Usuario < ApplicationRecord
-  enum cargo: [:vendedor, :admin]
+  enum cargo: [:vendedor, :admin, :superusuario]
 
   has_many :armazones
   has_many :lentes
