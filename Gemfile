@@ -48,6 +48,7 @@ group :development do
   gem 'capistrano-passenger', '~> 0.2.0'
   gem 'capistrano-rbenv', '~> 2.1', '>= 2.1.4'
   gem 'capistrano-rake'
+  gem 'capistrano-sidekiq'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
