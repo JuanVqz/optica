@@ -15,6 +15,9 @@ Corporacion.create! nombre: 'Público en general',
   colonia: 'otra colonia', codigo_postal: '68258', municipio: 'San Pablo Etla')
 
 # USUARIOS
+SuperUsuario.create! nombre: 'Super usuario', telefono: '951 111 1111',
+  email: 'superusuario@gmail.com', password: '123123123'
+
 Administrador.create! nombre: 'Administrador', telefono: '951 123 45 67',
   email: 'admin@gmail.com', password: '123123123'
 
