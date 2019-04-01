@@ -2,6 +2,24 @@ require 'rails_helper'
 
 RSpec.describe Administrador, type: :model do
 
+  describe ".notificar" do
+    let!(:administradores) { create_list :administrador, 3, notificar: false }
+
+    context "cuando notificar es true" do
+      let(:admin) { create :administrador, notificar: true }
+
+      it "debe regresar un administrador" do
+        expect(Administrador.notificar).to eq [admin]
+      end
+    end # context cuando notificar es true
+
+    context "cuando notificar es false" do
+      it "no debe regresar administradores" do
+        expect(Administrador.notificar).to eq []
+      end
+    end # context cuando notificar es false
+  end # describe "#notificar"
+
   describe "#establecer_cargo" do
     context "con cargo 'vendedor'" do
       let(:admin) { create :administrador, cargo: 'vendedor' }

@@ -21,6 +21,6 @@ class VentasMailer < ApplicationMailer
   private
 
   def administradores
-    @administradores ||= Administrador.where(notificar: true)
+    @administradores ||= Administrador.notificar
   end
 end
