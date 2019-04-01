@@ -1,15 +1,21 @@
 class ExistenciaDeProductoServicio
-  attr_accessor :vendidos
+  attr_accessor :venta
 
   def initialize(venta)
-    @vendidos = venta.vendidos
+    @venta = venta
   end
 
   def descontar
-    vendidos.each do |v|
+    if venta.saldada?
+      descontar_existencia
+      VentasMailer.descontar_productos(venta).deliver
+    end
+  end
+
+  def descontar_existencia
+    venta.vendidos.each do |v|
       v.producto.existencia -= v.cantidad
       v.producto.save
     end
   end
-
 end

@@ -2,9 +2,10 @@ require 'rails_helper'
 
 RSpec.describe ExistenciaDeProductoServicio do
 
-  describe "#descontar" do
+  subject { described_class }
 
-    let(:armazon) { create :armazon, precio_venta: 100, existencia: 10 }
+  describe "#descontar" do
+    let!(:armazon) { create :armazon, precio_venta: 100, existencia: 10 }
     let(:vendidos) do
       build_list :vendido, 2, producto: armazon, cantidad: 1,
         precio_venta: 100, subtotal: 100
@@ -12,8 +13,6 @@ RSpec.describe ExistenciaDeProductoServicio do
     let(:venta) do
       create :venta, total: 200, pagos: pagos, vendidos: vendidos
     end
-
-    before { [armazon, venta] }
 
     context "cuando la venta es saldada" do
       let(:pagos) do
@@ -24,8 +23,10 @@ RSpec.describe ExistenciaDeProductoServicio do
         expect(venta).to be_saldada
       end
 
-      it "debe descontar 2 existencias del armazon" do
-        expect(armazon.existencia).to eq 8
+      it "armazon debe tener 8 existencias" do
+        expect {
+          subject.new(venta).descontar
+        }.to change { armazon.existencia }.from(10).to(8)
       end
     end # context cuando la venta es saldada
 
@@ -38,8 +39,10 @@ RSpec.describe ExistenciaDeProductoServicio do
         expect(venta).to_not be_saldada
       end
 
-      it "no debe descontar existencia del armazon" do
-        expect(armazon.existencia).to eq 10
+      it "armazon no debe cambiar la existencia" do
+        expect {
+          subject.new(venta).descontar
+        }.not_to change { armazon.existencia }
       end
     end # context cuando la venta es no es saldada
   end # describe "#descontar"
