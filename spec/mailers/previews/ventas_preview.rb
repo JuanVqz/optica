@@ -6,4 +6,9 @@ class VentasPreview < ActionMailer::Preview
     VentasMailer.nueva(venta).deliver
   end
 
+  def descontar_productos
+    venta = Venta.first
+    VentasMailer.descontar_productos(venta).deliver
+  end
+
 end

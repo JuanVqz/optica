@@ -9,7 +9,7 @@ class Vendido < ApplicationRecord
     numericality: { greater_than: 0 }
   validates :precio_compra, numericality: { greater_than_or_equal_to: 0 }
 
-  delegate :nombre, :codigo, :tipo, to: :producto, prefix: false,
+  delegate :nombre, :codigo, :tipo, :marca, to: :producto, prefix: false,
     allow_nil: true
 
   default_scope { includes(:producto) }

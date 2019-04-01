@@ -1,0 +1,22 @@
+%p.header Hola, #{@admin} se descontó producto del inventario.
+
+%p.paragraph
+  Se descontaron productos de la venta
+  %strong #{@venta}.
+
+%table.table
+  %thead
+    %tr
+      %th CÓDIGO
+      %th MARCA
+      %th CANTIDAD
+  %tbody
+    - @venta.vendidos.each do |vendido|
+      %tr
+        %td= vendido
+        %td= vendido.marca
+        %td= vendido.cantidad
+
+%p.paragraph-center
+  = link_to 'Click para el detalle de venta', @venta, class: 'button button--red'
+
