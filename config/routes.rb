@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  authenticate :usuario, lambda { |u| u.superusuario? } do
+    require 'sidekiq/web'
+    mount Sidekiq::Web => '/sidekiq'
+  end
+
   devise_for :usuarios
 
   namespace :api do
