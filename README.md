@@ -11,7 +11,8 @@ Es un punto de venta de lentes, armazones, micas y tratamientos.
   * postgres
   * node 11.1.0
   * yarn 1.13.0
-  * [minimagick](https://github.com/minimagick/minimagick)
+  * [minimagick](https://github.com/minimagick/minimagick), si usas ubuntu
+    instalar ´sudo apt install imagemagick´
   * [sidekiq](https://github.com/mperham/sidekiq)
   * [redis](https://redis.io/download)
 
